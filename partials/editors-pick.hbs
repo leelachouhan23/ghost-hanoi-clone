@@ -1,28 +1,41 @@
-{{!--
-  partials/editors-pick.hbs
-  Single featured editorial spotlight.
-  Priority: posts tagged #editors-pick → falls back to featured:true posts.
-  The template renders whichever query returns a result first.
-
-  TODO (post-template owner): if you add an "Editor's Pick" post page style,
-  link the card title to post.hbs for a custom article layout.
---}}
-
-{{#get "posts" filter="tag:editors-pick" limit="1" include="tags,authors"}}
-    {{#if posts}}
-        {{#foreach posts}}
-            {{> "editors-pick-card"}}
+{{#get "posts" filter="tag:hash-editors-pick" limit="1" as |ep|}}
+    {{#if ep}}
+        {{#foreach ep}}
+        <section class="editors-pick-section">
+            {{#if feature_image}}
+                <img class="ep-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy">
+            {{/if}}
+            <div class="ep-overlay"></div>
+            <div class="container">
+                <div class="ep-content">
+                    <span class="ep-tag">Practice</span>
+                    <h2 class="ep-title"><a href="{{url}}">{{title}}</a></h2>
+                    {{#if excerpt}}
+                        <p class="ep-excerpt">{{excerpt}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
         {{/foreach}}
     {{else}}
-
-        {{! Fallback: any featured post }}
-        {{#get "posts" filter="featured:true" limit="1" include="tags,authors"}}
-            {{#if posts}}
-                {{#foreach posts}}
-                    {{> "editors-pick-card"}}
-                {{/foreach}}
-            {{/if}}
+        {{#get "posts" filter="featured:true" limit="1" as |fallback|}}
+            {{#foreach fallback}}
+            <section class="editors-pick-section">
+                {{#if feature_image}}
+                    <img class="ep-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy">
+                {{/if}}
+                <div class="ep-overlay"></div>
+                <div class="container">
+                    <div class="ep-content">
+                        <span class="ep-tag">Editor's Pick</span>
+                        <h2 class="ep-title"><a href="{{url}}">{{title}}</a></h2>
+                        {{#if excerpt}}
+                            <p class="ep-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </section>
+            {{/foreach}}
         {{/get}}
-
     {{/if}}
 {{/get}}

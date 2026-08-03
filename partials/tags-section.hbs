@@ -1,0 +1,29 @@
+<section class="tags-section">
+    <div class="container">
+        <div class="tags-header">
+            <h2 class="tags-title">Tags</h2>
+            <div class="tags-nav">
+                <button aria-label="Scroll left" id="tags-prev">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <button aria-label="Scroll right" id="tags-next">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+
+        {{#get "tags" limit="15" include="count.posts"}}
+            <div class="tags-carousel" id="tags-slider">
+                {{#foreach tags}}
+                    <a href="{{url}}" class="tag-card">
+                        {{#if feature_image}}
+                            <img class="tag-image" src="{{img_url feature_image size="m"}}" alt="{{name}}" loading="lazy">
+                        {{/if}}
+                        <div class="tag-overlay"></div>
+                        <h3 class="tag-name">{{name}}</h3>
+                    </a>
+                {{/foreach}}
+            </div>
+        {{/get}}
+    </div>
+</section>

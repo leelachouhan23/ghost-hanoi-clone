@@ -1,59 +1,25 @@
-{{!--
-  partials/header.hbs
-  Sticky glassmorphic header: logo/site title, primary nav, Subscribe button (Portal).
-  The Subscribe button is hidden from existing members via {{#unless @member}}.
---}}
-<a class="skip-nav-link" href="#main-content">Skip to content</a>
-
-<header class="site-header" role="banner">
-    <div class="container header-inner">
-
-        {{! ── Logo / Site Title ── }}
-        <div class="site-branding">
-            <a href="{{@site.url}}" class="site-branding__link" aria-label="{{@site.title}} — home">
-                {{#if @site.logo}}
-                    <img class="site-branding__logo"
-                         src="{{@site.logo}}"
-                         alt="{{@site.title}}"
-                         width="140" height="40" />
-                {{else}}
-                    <span class="site-branding__name">{{@site.title}}</span>
-                {{/if}}
-            </a>
-        </div>
-
-        {{! ── Primary Navigation ── }}
-        <nav class="site-nav" aria-label="Primary navigation" id="primary-nav">
-            {{navigation}}
-        </nav>
-
-        {{! ── Header Actions ── }}
-        <div class="header-actions">
-            {{#unless @member}}
-                <a href="#/portal/signup"
-                   class="btn btn-subscribe"
-                   aria-label="Subscribe to {{@site.title}}">
-                    Subscribe
-                </a>
-            {{/unless}}
-            {{#if @member}}
-                <a href="#/portal/account"
-                   class="btn btn-account"
-                   aria-label="Manage your account">
-                    Account
-                </a>
+<header class="site-header">
+    <div class="container">
+        <a href="{{@site.url}}" class="site-logo">
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" alt="{{@site.title}}">
+            {{else}}
+                <span>{{@site.title}}</span>
             {{/if}}
+        </a>
 
-            {{! ── Mobile menu toggle ── }}
-            <button class="nav-toggle" id="nav-toggle"
-                    aria-controls="primary-nav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation menu">
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-            </button>
+        <div class="nav-wrap">
+            <nav id="primary-nav" class="nav-menu">
+                {{navigation}}
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn" data-ghost-search aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-
     </div>
 </header>
