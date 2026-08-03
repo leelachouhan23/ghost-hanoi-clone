@@ -1,0 +1,47 @@
+{
+  "name": "ghost-hanoi-clone",
+  "description": "A production-quality recreation of the Ghost Hanoi theme — editorial/magazine style for Ghost 5+.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Team",
+    "email": "theme@example.com"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "config": {
+    "posts_per_page": 12,
+    "card_assets": true,
+    "image_sizes": {
+      "xxs": { "width": 30 },
+      "xs":  { "width": 100 },
+      "s":   { "width": 300 },
+      "m":   { "width": 600 },
+      "l":   { "width": 1000 },
+      "xl":  { "width": 2000 }
+    },
+    "custom": {
+      "heading_font": {
+        "type": "select",
+        "options": ["Lora", "Playfair Display", "Inter", "Outfit"],
+        "default": "Lora",
+        "description": "Heading & display font"
+      },
+      "body_font": {
+        "type": "select",
+        "options": ["Inter", "Lora", "Outfit"],
+        "default": "Inter",
+        "description": "Body text font"
+      },
+      "brand_statement": {
+        "type": "text",
+        "default": "A journal on design, culture, and the ideas that shape a story.",
+        "description": "Brand statement shown in the full-bleed mid-page block"
+      }
+    }
+  }
+}
