@@ -9,22 +9,42 @@
         const prevBtn = document.getElementById('hero-prev');
         const dots = document.querySelectorAll('.hero-dot');
         
-        const goToSlide = (index) => {
-            heroSlides[currentSlide].classList.remove('is-active');
+        const goToSlide = (index, direction) => {
+            const currentEl = heroSlides[currentSlide];
+            currentEl.classList.remove('is-active', 'is-leaving-left', 'is-leaving-right');
+            
+            // Add leaving direction
+            if (direction === 'left') currentEl.classList.add('is-leaving-left');
+            if (direction === 'right') currentEl.classList.add('is-leaving-right');
+            
             if (dots[currentSlide]) dots[currentSlide].classList.remove('is-active');
             
             currentSlide = (index + heroSlides.length) % heroSlides.length;
             
+            // Clean new active element
+            heroSlides[currentSlide].classList.remove('is-leaving-left', 'is-leaving-right');
             heroSlides[currentSlide].classList.add('is-active');
             if (dots[currentSlide]) dots[currentSlide].classList.add('is-active');
         };
         
-        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1, 'left'));
+        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1, 'right'));
         
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
+            dot.addEventListener('click', () => {
+                if (index > currentSlide) goToSlide(index, 'left');
+                else if (index < currentSlide) goToSlide(index, 'right');
+            });
         });
+    }
+
+    /* ── 1.5. Mega Menu Injection ────────────────────────────── */
+    const megaMenuTemplate = document.getElementById('mega-menu-template');
+    const dropdownTrigger = document.querySelector('.has-dropdown');
+    if (megaMenuTemplate && dropdownTrigger) {
+        // Move the HTML from the template into the navigation list item
+        dropdownTrigger.innerHTML += megaMenuTemplate.innerHTML;
+        megaMenuTemplate.remove();
     }
 
     /* ── 2. Brand Image Insertion ─────────────────────────────── */

@@ -9,7 +9,7 @@
         </a>
 
         <div class="nav-wrap">
-            <nav id="primary-nav" class="nav-menu">
+            <nav id="primary-nav" class="nav-primary-container">
                 {{navigation}}
             </nav>
             <div class="header-actions">
@@ -19,6 +19,18 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mega Menu Template (Moved by JS) -->
+    <div id="mega-menu-template" style="display: none;">
+        <div class="mega-menu-dropdown">
+            <div class="mega-menu-links">
+                {{navigation type="secondary"}}
+            </div>
+            <div class="mega-menu-image">
+                <img src="{{#if @custom.dropdown_image}}{{@custom.dropdown_image}}{{else}}{{asset 'images/piano.jpg'}}{{/if}}" alt="Menu Image">
             </div>
         </div>
     </div>

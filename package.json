@@ -41,6 +41,26 @@
         "type": "text",
         "default": "A journal on design, culture, and the ideas that shape a story.",
         "description": "Brand statement shown in the full-bleed mid-page block"
+      },
+      "dropdown_image": {
+        "type": "image",
+        "description": "Image displayed inside the Archive Pages dropdown mega-menu"
+      },
+      "linkedin_url": {
+        "type": "text",
+        "description": "Full URL to your LinkedIn profile"
+      },
+      "tiktok_url": {
+        "type": "text",
+        "description": "Full URL to your TikTok profile"
+      },
+      "youtube_url": {
+        "type": "text",
+        "description": "Full URL to your YouTube channel"
+      },
+      "instagram_url": {
+        "type": "text",
+        "description": "Full URL to your Instagram profile"
       }
     }
   }

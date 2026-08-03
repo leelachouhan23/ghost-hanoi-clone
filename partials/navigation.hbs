@@ -1,0 +1,7 @@
+<ul class="nav-menu {{#if isSecondary}}nav-secondary{{else}}nav-primary{{/if}}">
+    {{#foreach navigation}}
+        <li class="nav-item {{link_class for=(url) class=(concat "nav-" slug)}} {{#if current}}nav-current{{/if}} {{#if (match label "Archive Pages")}}has-dropdown{{/if}}">
+            <a href="{{url absolute="true"}}">{{label}}</a>
+        </li>
+    {{/foreach}}
+</ul>

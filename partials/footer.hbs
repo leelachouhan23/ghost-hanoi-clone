@@ -5,14 +5,7 @@
             <a href="#">Buy Hanoi</a>
         </nav>
         <div class="footer-social">
-            {{#if @site.twitter}}
-                <a href="https://x.com/{{@site.twitter}}" aria-label="X (Twitter)">X</a>
-            {{/if}}
-            {{#if @site.facebook}}
-                <a href="https://www.facebook.com/{{@site.facebook}}" aria-label="Facebook">FB</a>
-            {{/if}}
-            <a href="https://instagram.com" aria-label="Instagram">IG</a>
-            <a href="https://linkedin.com" aria-label="LinkedIn">LI</a>
+            {{> "social-links"}}
         </div>
         <div class="footer-copy">
             &copy; {{date format="YYYY"}} {{@site.title}}. Published with Ghost & Hanoi.

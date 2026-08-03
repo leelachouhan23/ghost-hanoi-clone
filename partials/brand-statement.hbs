@@ -11,14 +11,7 @@
         {{/if}}
         
         <div class="brand-social">
-            {{#if @site.facebook}}
-                <a href="https://www.facebook.com/{{@site.facebook}}" aria-label="Facebook">FB</a>
-            {{/if}}
-            {{#if @site.twitter}}
-                <a href="https://x.com/{{@site.twitter}}" aria-label="Twitter">X</a>
-            {{/if}}
-            <a href="https://instagram.com" aria-label="Instagram">IG</a>
-            <a href="https://linkedin.com" aria-label="LinkedIn">LI</a>
+            {{> "social-links"}}
         </div>
     </div>
 </section>
