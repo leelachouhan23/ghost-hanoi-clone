@@ -1,0 +1,79 @@
+{{!--
+  partials/newsletter.hbs
+  Subscribe/newsletter section wired to Ghost Portal.
+  Hidden entirely from existing @member users (they're already subscribed).
+  Uses Ghost's native data-members-form for non-Portal fallback compatibility.
+--}}
+
+{{#unless @member}}
+<section class="hanoi-newsletter" aria-labelledby="newsletter-heading">
+    <div class="container hanoi-newsletter__inner">
+
+        <div class="hanoi-newsletter__content">
+
+            <span class="hanoi-newsletter__eyebrow">Stay in the loop</span>
+            <h2 class="hanoi-newsletter__title" id="newsletter-heading">
+                Get stories that matter, straight to your inbox.
+            </h2>
+            <p class="hanoi-newsletter__desc">
+                Join {{@site.title}} readers and never miss a story.
+                No spam, unsubscribe anytime.
+            </p>
+
+            {{! Portal-wired subscribe button (primary CTA) }}
+            <div class="hanoi-newsletter__cta-group">
+                <a href="#/portal/signup"
+                   class="btn btn-primary hanoi-newsletter__portal-btn"
+                   aria-label="Subscribe via Ghost Portal">
+                    Subscribe free
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <span class="hanoi-newsletter__or" aria-hidden="true">or</span>
+                {{! Inline form fallback for themes without Portal active }}
+                <form data-members-form="subscribe" class="hanoi-newsletter__form" novalidate>
+                    <label class="sr-only" for="newsletter-email">Email address</label>
+                    <input
+                        id="newsletter-email"
+                        data-members-email
+                        type="email"
+                        required
+                        placeholder="your@email.com"
+                        class="hanoi-newsletter__input"
+                        autocomplete="email"
+                        aria-describedby="newsletter-status"
+                    />
+                    <button type="submit" class="btn btn-primary hanoi-newsletter__submit">
+                        Subscribe
+                    </button>
+
+                    <div id="newsletter-status" role="status" aria-live="polite">
+                        <p class="hanoi-newsletter__success">
+                            ✓ Check your inbox and confirm your subscription.
+                        </p>
+                        <p class="hanoi-newsletter__error">
+                            Please enter a valid email address.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        {{! Decorative illustration area }}
+        <div class="hanoi-newsletter__deco" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+                <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.25"/>
+                <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+                <path d="M60 100 Q100 60 140 100 Q100 140 60 100Z" fill="currentColor" opacity="0.08"/>
+                <text x="100" y="107" text-anchor="middle" font-size="28" fill="currentColor" opacity="0.6">✉</text>
+            </svg>
+        </div>
+
+    </div>
+</section>
+{{/unless}}

@@ -1,0 +1,83 @@
+{{!--
+  partials/footer.hbs
+  Three-column footer: about/description, secondary nav links, social icons,
+  tag cloud, and copyright. Reusable across all templates.
+--}}
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+        <div class="footer-grid">
+
+            {{! ── Col 1: Brand + tagline ── }}
+            <div class="footer-col footer-col--brand">
+                <a href="{{@site.url}}" class="footer-brand" aria-label="{{@site.title}} — home">
+                    {{#if @site.logo}}
+                        <img src="{{@site.logo}}" alt="{{@site.title}}" class="footer-logo" />
+                    {{else}}
+                        <span class="footer-site-name">{{@site.title}}</span>
+                    {{/if}}
+                </a>
+                {{#if @site.description}}
+                    <p class="footer-description">{{@site.description}}</p>
+                {{/if}}
+
+                {{! Social icons }}
+                <div class="footer-social" aria-label="Social media links">
+                    {{#if @site.facebook}}
+                        <a href="https://www.facebook.com/{{@site.facebook}}"
+                           target="_blank" rel="noopener noreferrer"
+                           class="footer-social__link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    {{/if}}
+                    {{#if @site.twitter}}
+                        <a href="https://x.com/{{@site.twitter}}"
+                           target="_blank" rel="noopener noreferrer"
+                           class="footer-social__link" aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+
+            {{! ── Col 2: Quick links (secondary nav) ── }}
+            <div class="footer-col footer-col--nav">
+                <h3 class="footer-col__heading">Quick Links</h3>
+                <nav aria-label="Secondary navigation">
+                    {{navigation type="secondary"}}
+                </nav>
+            </div>
+
+            {{! ── Col 3: Tag cloud ── }}
+            <div class="footer-col footer-col--tags">
+                <h3 class="footer-col__heading">Topics</h3>
+                {{#get "tags" limit="12" order="count.posts desc"}}
+                    <div class="footer-tag-cloud" aria-label="Browse by topic">
+                        {{#foreach tags}}
+                            <a href="{{url}}" class="footer-tag">{{name}}</a>
+                        {{/foreach}}
+                    </div>
+                {{/get}}
+            </div>
+
+        </div>
+
+        {{! ── Bottom bar ── }}
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; {{date format="YYYY"}}
+                <a href="{{@site.url}}">{{@site.title}}</a>.
+                All rights reserved.
+            </p>
+            <p class="footer-credits">
+                Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                &middot; Hanoi theme recreation
+            </p>
+        </div>
+
+    </div>
+</footer>

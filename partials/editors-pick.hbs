@@ -1,0 +1,28 @@
+{{!--
+  partials/editors-pick.hbs
+  Single featured editorial spotlight.
+  Priority: posts tagged #editors-pick → falls back to featured:true posts.
+  The template renders whichever query returns a result first.
+
+  TODO (post-template owner): if you add an "Editor's Pick" post page style,
+  link the card title to post.hbs for a custom article layout.
+--}}
+
+{{#get "posts" filter="tag:editors-pick" limit="1" include="tags,authors"}}
+    {{#if posts}}
+        {{#foreach posts}}
+            {{> "editors-pick-card"}}
+        {{/foreach}}
+    {{else}}
+
+        {{! Fallback: any featured post }}
+        {{#get "posts" filter="featured:true" limit="1" include="tags,authors"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                    {{> "editors-pick-card"}}
+                {{/foreach}}
+            {{/if}}
+        {{/get}}
+
+    {{/if}}
+{{/get}}

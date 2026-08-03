@@ -1,0 +1,55 @@
+{{!--
+  partials/brand-statement.hbs
+  Full-bleed editorial brand block matching the Hanoi demo's
+  "A journal on design, culture, and the ideas that shape a story." section.
+  Uses @site.description and @site.cover_image (or the custom brand_statement setting).
+--}}
+
+<section class="hanoi-brand" aria-label="About {{@site.title}}">
+
+    {{! Background cover image }}
+    {{#if @site.cover_image}}
+        <div class="hanoi-brand__bg-wrap" aria-hidden="true">
+            <img
+                class="hanoi-brand__bg"
+                src="{{img_url @site.cover_image size="xl"}}"
+                alt=""
+                loading="lazy"
+            />
+            <div class="hanoi-brand__bg-overlay"></div>
+        </div>
+    {{else}}
+        <div class="hanoi-brand__bg-wrap hanoi-brand__bg-wrap--solid" aria-hidden="true"></div>
+    {{/if}}
+
+    <div class="container hanoi-brand__inner">
+        <div class="hanoi-brand__content">
+
+            {{! Eyebrow label }}
+            <span class="hanoi-brand__eyebrow">Our Mission</span>
+
+            {{! Brand statement — prefer custom setting, fall back to site description }}
+            <blockquote class="hanoi-brand__statement">
+                {{#if @custom.brand_statement}}
+                    {{@custom.brand_statement}}
+                {{else if @site.description}}
+                    {{@site.description}}
+                {{else}}
+                    A journal on design, culture, and the ideas that shape a story.
+                {{/if}}
+            </blockquote>
+
+            <a href="/about/" class="btn btn-ghost hanoi-brand__cta">
+                Learn more about us
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+
+        </div>
+    </div>
+
+</section>

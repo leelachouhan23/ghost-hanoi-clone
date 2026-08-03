@@ -1,0 +1,125 @@
+{{!--
+  partials/hero.hbs
+  Editorial hero: fetches top 5 recent posts.
+    • Post 1  → full-width primary hero (large feature image, tag, title, excerpt 25 words)
+    • Posts 2–5 → secondary four-column row (thumbnail, tag, title, excerpt 15 words)
+  Referenced in index.hbs via {{> "hero"}}
+--}}
+
+{{#get "posts" limit="5" include="tags,authors"}}
+<section class="hanoi-hero" aria-label="Featured stories">
+
+    {{! ─── PRIMARY HERO (post 1) ─────────────────────────────────── }}
+    {{#if posts}}
+        {{#foreach posts limit="1"}}
+        <div class="hanoi-hero__primary">
+
+            {{! Feature image }}
+            <a class="hanoi-hero__primary-img-link"
+               href="{{url}}"
+               aria-label="Read: {{title}}"
+               tabindex="-1">
+                {{#if feature_image}}
+                    <img
+                        class="hanoi-hero__primary-img"
+                        srcset="{{img_url feature_image size="s"}} 300w,
+                                {{img_url feature_image size="m"}} 600w,
+                                {{img_url feature_image size="l"}} 1000w,
+                                {{img_url feature_image size="xl"}} 2000w"
+                        sizes="100vw"
+                        src="{{img_url feature_image size="l"}}"
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
+                {{else}}
+                    <div class="hanoi-hero__primary-img hanoi-hero__img--fallback" aria-hidden="true"></div>
+                {{/if}}
+                <div class="hanoi-hero__overlay" aria-hidden="true"></div>
+            </a>
+
+            {{! Content overlay }}
+            <div class="hanoi-hero__primary-content">
+                {{#primary_tag}}
+                    <a class="hanoi-tag-label" href="{{url}}">{{name}}</a>
+                {{/primary_tag}}
+
+                <h2 class="hanoi-hero__primary-title">
+                    <a href="{{url}}">{{title}}</a>
+                </h2>
+
+                <p class="hanoi-hero__primary-excerpt">{{excerpt words="25"}}</p>
+
+                <div class="hanoi-hero__meta" aria-label="Post metadata">
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <img class="hanoi-author-avatar"
+                                 src="{{img_url profile_image size="xs"}}"
+                                 alt="{{name}}" />
+                        {{/if}}
+                        <span class="hanoi-author-name">{{name}}</span>{{#unless @last}}&thinsp;&amp;&thinsp;{{/unless}}
+                    {{/foreach}}
+                    <span class="hanoi-meta-sep" aria-hidden="true">&middot;</span>
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                </div>
+            </div>
+
+        </div>
+        {{/foreach}}
+
+        {{! ─── SECONDARY ROW (posts 2–5) ─────────────────────────── }}
+        <div class="hanoi-hero__secondary" aria-label="More recent stories">
+            {{#foreach posts from="2" limit="4"}}
+            <article class="hanoi-hero__secondary-card">
+
+                <a class="hanoi-hero__secondary-img-link"
+                   href="{{url}}"
+                   tabindex="-1"
+                   aria-hidden="true">
+                    {{#if feature_image}}
+                        <img
+                            class="hanoi-hero__secondary-img"
+                            srcset="{{img_url feature_image size="s"}} 300w,
+                                    {{img_url feature_image size="m"}} 600w"
+                            sizes="(max-width: 768px) 100vw, 280px"
+                            src="{{img_url feature_image size="s"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            loading="lazy"
+                        />
+                    {{else}}
+                        <div class="hanoi-hero__secondary-img hanoi-hero__img--fallback" aria-hidden="true"></div>
+                    {{/if}}
+                </a>
+
+                <div class="hanoi-hero__secondary-content">
+                    {{#primary_tag}}
+                        <a class="hanoi-tag-label hanoi-tag-label--sm" href="{{url}}">{{name}}</a>
+                    {{/primary_tag}}
+
+                    <h3 class="hanoi-hero__secondary-title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h3>
+
+                    <p class="hanoi-hero__secondary-excerpt">{{excerpt words="15"}}</p>
+
+                    <div class="hanoi-hero__meta">
+                        {{#foreach authors}}
+                            <span class="hanoi-author-name">{{name}}</span>{{#unless @last}}&thinsp;&amp;&thinsp;{{/unless}}
+                        {{/foreach}}
+                        <span class="hanoi-meta-sep" aria-hidden="true">&middot;</span>
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                    </div>
+                </div>
+
+            </article>
+            {{/foreach}}
+        </div>
+
+    {{else}}
+        <div class="hanoi-hero__empty">
+            <p>No stories published yet — check back soon.</p>
+        </div>
+    {{/if}}
+
+</section>
+{{/get}}

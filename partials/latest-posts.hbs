@@ -1,0 +1,94 @@
+{{!--
+  partials/latest-posts.hbs
+  Responsive 12-card grid of stories following the hero (offset to avoid duplication).
+  Uses {{#get "posts" limit="12" filter="page:false" order="published_at desc"}}
+  with an offset of 5 to skip the 5 posts already shown in the hero.
+
+  Each card shows: thumbnail, primary_tag, title, authors, date.
+  Ends with a "Latest stories →" link to /latest/.
+--}}
+
+{{#get "posts" limit="12" filter="page:false" order="published_at desc" include="tags,authors" from="6"}}
+<section class="hanoi-latest" aria-labelledby="latest-stories-heading">
+
+    <div class="container">
+
+        <header class="hanoi-section-header">
+            <h2 class="hanoi-section-title" id="latest-stories-heading">Latest Stories</h2>
+            <a class="hanoi-section-link" href="/latest/" aria-label="View all latest stories">
+                View all
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </header>
+
+        {{#if posts}}
+        <div class="hanoi-latest__grid" role="list">
+            {{#foreach posts}}
+            <article class="hanoi-latest__card" role="listitem">
+
+                {{! Thumbnail }}
+                <a class="hanoi-latest__img-link" href="{{url}}" tabindex="-1" aria-hidden="true">
+                    {{#if feature_image}}
+                        <img
+                            class="hanoi-latest__img"
+                            srcset="{{img_url feature_image size="s"}} 300w,
+                                    {{img_url feature_image size="m"}} 600w"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                            src="{{img_url feature_image size="m"}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            loading="lazy"
+                        />
+                    {{else}}
+                        <div class="hanoi-latest__img hanoi-latest__img--fallback" aria-hidden="true"></div>
+                    {{/if}}
+                </a>
+
+                <div class="hanoi-latest__content">
+
+                    {{#primary_tag}}
+                        <a class="hanoi-tag-label hanoi-tag-label--sm" href="{{url}}">{{name}}</a>
+                    {{/primary_tag}}
+
+                    <h3 class="hanoi-latest__title">
+                        <a href="{{url}}">{{title}}</a>
+                    </h3>
+
+                    <div class="hanoi-latest__meta">
+                        <div class="hanoi-latest__authors">
+                            {{#foreach authors limit="2"}}
+                                {{#if profile_image}}
+                                    <img class="hanoi-author-avatar"
+                                         src="{{img_url profile_image size="xs"}}"
+                                         alt="{{name}}" />
+                                {{/if}}
+                                <span class="hanoi-author-name">{{name}}</span>{{#unless @last}}&thinsp;&amp;&thinsp;{{/unless}}
+                            {{/foreach}}
+                        </div>
+                        <span class="hanoi-meta-sep" aria-hidden="true">&middot;</span>
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                    </div>
+
+                </div>
+            </article>
+            {{/foreach}}
+        </div>
+
+        <div class="hanoi-latest__footer">
+            <a class="btn btn-outline" href="/latest/">
+                See all latest stories &rarr;
+            </a>
+        </div>
+
+        {{else}}
+            <p class="hanoi-empty-state">More stories coming soon.</p>
+        {{/if}}
+
+    </div>
+
+</section>
+{{/get}}

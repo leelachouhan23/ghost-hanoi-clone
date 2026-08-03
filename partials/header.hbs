@@ -1,0 +1,59 @@
+{{!--
+  partials/header.hbs
+  Sticky glassmorphic header: logo/site title, primary nav, Subscribe button (Portal).
+  The Subscribe button is hidden from existing members via {{#unless @member}}.
+--}}
+<a class="skip-nav-link" href="#main-content">Skip to content</a>
+
+<header class="site-header" role="banner">
+    <div class="container header-inner">
+
+        {{! ── Logo / Site Title ── }}
+        <div class="site-branding">
+            <a href="{{@site.url}}" class="site-branding__link" aria-label="{{@site.title}} — home">
+                {{#if @site.logo}}
+                    <img class="site-branding__logo"
+                         src="{{@site.logo}}"
+                         alt="{{@site.title}}"
+                         width="140" height="40" />
+                {{else}}
+                    <span class="site-branding__name">{{@site.title}}</span>
+                {{/if}}
+            </a>
+        </div>
+
+        {{! ── Primary Navigation ── }}
+        <nav class="site-nav" aria-label="Primary navigation" id="primary-nav">
+            {{navigation}}
+        </nav>
+
+        {{! ── Header Actions ── }}
+        <div class="header-actions">
+            {{#unless @member}}
+                <a href="#/portal/signup"
+                   class="btn btn-subscribe"
+                   aria-label="Subscribe to {{@site.title}}">
+                    Subscribe
+                </a>
+            {{/unless}}
+            {{#if @member}}
+                <a href="#/portal/account"
+                   class="btn btn-account"
+                   aria-label="Manage your account">
+                    Account
+                </a>
+            {{/if}}
+
+            {{! ── Mobile menu toggle ── }}
+            <button class="nav-toggle" id="nav-toggle"
+                    aria-controls="primary-nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation menu">
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+        </div>
+
+    </div>
+</header>
