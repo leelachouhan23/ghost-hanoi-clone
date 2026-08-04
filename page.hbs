@@ -1,0 +1,19 @@
+{{!< default}}
+
+{{> "header"}}
+
+{{#post}}
+<article class="post-content page-template">
+    <header class="latest-hero-banner">
+        <div class="latest-hero-container">
+            <h1 class="latest-page-title">{{title}}</h1>
+        </div>
+    </header>
+
+    <section class="latest-stories-section">
+        <div class="latest-stories-container">
+            {{content}}
+        </div>
+    </section>
+</article>
+{{/post}}

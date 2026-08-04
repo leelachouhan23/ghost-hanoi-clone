@@ -1,0 +1,47 @@
+<header class="site-header">
+    <div class="site-header-container">
+        <!-- Site Logo / Brand -->
+        <a href="{{@site.url}}" class="site-logo-link">
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" alt="{{@site.title}}">
+            {{else}}
+                {{@site.title}}
+            {{/if}}
+        </a>
+
+        <!-- Translucent Pill Navigation -->
+        <div class="nav-pill-container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{{@site.url}}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{@site.url}}/latest/" class="nav-link active">Latest</a>
+                </li>
+                <li class="nav-item nav-item-has-children">
+                    <a href="#" class="nav-link">
+                        Archive Pages
+                        <span class="dropdown-caret">▾</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-has-children">
+                    <a href="#" class="nav-link">
+                        Post Layouts
+                        <span class="dropdown-caret">▾</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/portal/signup" class="nav-link">Subscribe</a>
+                </li>
+            </ul>
+
+            <!-- Search Icon -->
+            <button class="search-button" data-ghost-search aria-label="Search">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>

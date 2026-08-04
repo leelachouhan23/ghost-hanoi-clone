@@ -1,0 +1,58 @@
+<article class="post-card {{post_class}}">
+    <!-- Featured Image -->
+    <div class="post-card-media">
+        <a href="{{url}}" aria-label="{{title}}">
+            {{#if feature_image}}
+                <img class="post-card-image"
+                     srcset="{{img_url feature_image size="s"}} 300w,
+                             {{img_url feature_image size="m"}} 600w,
+                             {{img_url feature_image size="l"}} 1000w"
+                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                     src="{{img_url feature_image size="m"}}"
+                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                     loading="lazy"
+                >
+            {{else}}
+                <img class="post-card-image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="{{title}}" loading="lazy">
+            {{/if}}
+        </a>
+    </div>
+
+    <!-- Content -->
+    <div class="post-card-content">
+        <!-- Tag Badge -->
+        {{#if primary_tag}}
+            <a href="{{primary_tag.url}}" class="post-card-tag">
+                {{primary_tag.name}}
+            </a>
+        {{else}}
+            <span class="post-card-tag">Story</span>
+        {{/if}}
+
+        <!-- Title -->
+        <h2 class="post-card-title">
+            <a href="{{url}}">{{title}}</a>
+        </h2>
+
+        <!-- Excerpt -->
+        <p class="post-card-excerpt">
+            {{#if excerpt}}
+                {{excerpt words="22"}}
+            {{else}}
+                Explore the latest insights, stories, and developments carefully curated in this article.
+            {{/if}}
+        </p>
+
+        <!-- Post Meta -->
+        <div class="post-card-meta">
+            {{#if primary_author}}
+                {{#if primary_author.profile_image}}
+                    <img class="author-avatar" src="{{img_url primary_author.profile_image size="xs"}}" alt="{{primary_author.name}}">
+                {{/if}}
+                <span class="author-name">{{primary_author.name}}</span>
+                <span class="meta-dot">•</span>
+            {{/if}}
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,126 @@
+/* Header Component Styles */
+.site-header {
+    background-color: var(--color-terracotta);
+    color: var(--color-white);
+    padding: 24px 32px 0 32px;
+    width: 100%;
+}
+
+.site-header-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Brand Logo */
+.site-logo-link {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.site-logo-link:hover {
+    opacity: 0.9;
+}
+
+/* Floating Navigation Pill */
+.nav-pill-container {
+    display: flex;
+    align-items: center;
+    background: var(--nav-pill-bg);
+    border: 1px solid var(--nav-pill-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-pill);
+    padding: 6px 12px;
+    gap: 4px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-white);
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link.active,
+.nav-link.nav-current {
+    background-color: var(--nav-pill-active-bg);
+    color: var(--nav-pill-active-text);
+    font-weight: 600;
+}
+
+/* Dropdown Caret Icon */
+.dropdown-caret {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    transition: transform var(--transition-fast);
+}
+
+.nav-item-has-children:hover .dropdown-caret {
+    transform: translateY(2px);
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background var(--transition-fast);
+}
+
+.search-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}

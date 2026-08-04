@@ -1,0 +1,83 @@
+<section class="latest-stories-section">
+    <div class="latest-stories-container">
+        <div class="posts-grid">
+            {{#if posts}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+            {{else}}
+                {{#get "posts" limit="9" include="tags,authors"}}
+                    {{#foreach posts}}
+                        {{> "post-card"}}
+                    {{else}}
+                        <!-- Demo Fallback Cards when testing without DB posts -->
+                        <article class="post-card">
+                            <div class="post-card-media">
+                                <a href="#"><img class="post-card-image" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Serene Landscapes"></a>
+                            </div>
+                            <div class="post-card-content">
+                                <span class="post-card-tag">Photography</span>
+                                <h2 class="post-card-title"><a href="#">Capturing Quiet Moments in Urban Spaces</a></h2>
+                                <p class="post-card-excerpt">An exploration of light, shadow, and architectural elegance across modern cities.</p>
+                                <div class="post-card-meta">
+                                    <span class="author-name">Alex Rivera</span>
+                                    <span class="meta-dot">•</span>
+                                    <time>Aug 04, 2026</time>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="post-card">
+                            <div class="post-card-media">
+                                <a href="#"><img class="post-card-image" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" alt="Nature Sanctuary"></a>
+                            </div>
+                            <div class="post-card-content">
+                                <span class="post-card-tag">Design</span>
+                                <h2 class="post-card-title"><a href="#">Harmonizing Color Palettes for Modern Interfaces</a></h2>
+                                <p class="post-card-excerpt">How earth tones and rich terracotta hues create warm, engaging digital experiences.</p>
+                                <div class="post-card-meta">
+                                    <span class="author-name">Sophia Chen</span>
+                                    <span class="meta-dot">•</span>
+                                    <time>Aug 02, 2026</time>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="post-card">
+                            <div class="post-card-media">
+                                <a href="#"><img class="post-card-image" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Coastal Reflections"></a>
+                            </div>
+                            <div class="post-card-content">
+                                <span class="post-card-tag">Culture</span>
+                                <h2 class="post-card-title"><a href="#">The Art of Mindful Craftsmanship</a></h2>
+                                <p class="post-card-excerpt">Discovering traditional techniques in modern creative studios worldwide.</p>
+                                <div class="post-card-meta">
+                                    <span class="author-name">Marcus Vance</span>
+                                    <span class="meta-dot">•</span>
+                                    <time>Jul 28, 2026</time>
+                                </div>
+                            </div>
+                        </article>
+                    {{/foreach}}
+                {{/get}}
+            {{/if}}
+        </div>
+
+        <!-- Pagination / Load More -->
+        {{#if pagination}}
+            <div class="pagination-container">
+                {{pagination}}
+            </div>
+        {{else}}
+            <div class="pagination-container">
+                <button class="load-more-btn">Load more stories</button>
+            </div>
+        {{/if}}
+    </div>
+</section>
+
+<!-- Floating Colors Filter Pill (Hanoi Special Feature) -->
+<div class="floating-colors-widget" id="colorsWidget">
+    <span class="color-dot"></span>
+    <span>Colors</span>
+</div>
