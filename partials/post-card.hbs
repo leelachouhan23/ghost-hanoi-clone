@@ -1,8 +1,8 @@
 <article class="post-card {{post_class}}">
-    <!-- Featured Image -->
-    <div class="post-card-media">
-        <a href="{{url}}" aria-label="{{title}}">
-            {{#if feature_image}}
+    <!-- Featured Image (Only rendered if featured image exists in Ghost Admin) -->
+    {{#if feature_image}}
+        <div class="post-card-media">
+            <a href="{{url}}" aria-label="{{title}}">
                 <img class="post-card-image"
                      srcset="{{img_url feature_image size="s"}} 300w,
                              {{img_url feature_image size="m"}} 600w,
@@ -12,11 +12,9 @@
                      alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
                      loading="lazy"
                 >
-            {{else}}
-                <img class="post-card-image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="{{title}}" loading="lazy">
-            {{/if}}
-        </a>
-    </div>
+            </a>
+        </div>
+    {{/if}}
 
     <!-- Content -->
     <div class="post-card-content">
@@ -25,8 +23,6 @@
             <a href="{{primary_tag.url}}" class="post-card-tag">
                 {{primary_tag.name}}
             </a>
-        {{else}}
-            <span class="post-card-tag">Story</span>
         {{/if}}
 
         <!-- Title -->
@@ -35,13 +31,11 @@
         </h2>
 
         <!-- Excerpt -->
-        <p class="post-card-excerpt">
-            {{#if excerpt}}
+        {{#if excerpt}}
+            <p class="post-card-excerpt">
                 {{excerpt words="22"}}
-            {{else}}
-                Explore the latest insights, stories, and developments carefully curated in this article.
-            {{/if}}
-        </p>
+            </p>
+        {{/if}}
 
         <!-- Post Meta -->
         <div class="post-card-meta">

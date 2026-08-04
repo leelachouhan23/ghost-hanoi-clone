@@ -10,7 +10,10 @@
     "theme",
     "hanoi"
   ],
-  "author": "Development Team",
+  "author": {
+    "name": "Development Team",
+    "email": "dev@example.com"
+  },
   "license": "MIT",
   "config": {
     "posts_per_page": 9,
