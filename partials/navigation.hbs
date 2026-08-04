@@ -1,7 +1,35 @@
 <ul class="nav-menu {{#if isSecondary}}nav-secondary{{else}}nav-primary{{/if}}">
     {{#foreach navigation}}
-        <li class="nav-item {{link_class for=(url) class=(concat "nav-" slug)}} {{#if current}}nav-current{{/if}} {{#if (match label "Archive Pages")}}has-dropdown{{/if}}">
-            <a href="{{url absolute="true"}}">{{label}}</a>
+        <li class="nav-item {{link_class for=(url) class=(concat "nav-" slug)}} {{#if current}}nav-current{{/if}} {{#match label "=" "Archive Pages"}}has-dropdown{{/match}} {{#match label "=" "Post Layouts"}}has-dropdown{{/match}}">
+            <a href="{{#match label "=" "Home"}}#{{else}}{{url absolute="true"}}{{/match}}" {{#match label "=" "Subscribe"}}data-portal="signup"{{/match}}>{{label}}</a>
+
+            {{^if ../isSecondary}}
+                {{#match label "=" "Archive Pages"}}
+                    <div class="mega-menu-dropdown">
+                        <div class="mega-menu-links">
+                            <ul class="nav-secondary dropdown-links-archive" style="visibility: hidden;">
+                                {{navigation type="secondary"}}
+                            </ul>
+                        </div>
+                        <div class="mega-menu-image">
+                            <img src="{{#if @custom.archive_dropdown_image}}{{@custom.archive_dropdown_image}}{{else}}{{asset 'images/typewriter.jpg'}}{{/if}}" alt="Archive Menu Image">
+                        </div>
+                    </div>
+                {{/match}}
+
+                {{#match label "=" "Post Layouts"}}
+                    <div class="mega-menu-dropdown">
+                        <div class="mega-menu-links">
+                            <ul class="nav-secondary dropdown-links-layout" style="visibility: hidden;">
+                                {{navigation type="secondary"}}
+                            </ul>
+                        </div>
+                        <div class="mega-menu-image">
+                            <img src="{{#if @custom.post_layouts_dropdown_image}}{{@custom.post_layouts_dropdown_image}}{{else}}{{asset 'images/typewriter.jpg'}}{{/if}}" alt="Layouts Menu Image">
+                        </div>
+                    </div>
+                {{/match}}
+            {{/if}}
         </li>
     {{/foreach}}
 </ul>

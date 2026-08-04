@@ -1,24 +1,26 @@
 <section class="hero-section" id="hero-slider">
-    {{#get "posts" filter="featured:true" limit="5" as |featured|}}
-        {{#foreach featured}}
-            <div class="hero-slide {{#if @first}}is-active{{/if}}" data-slide="{{@index}}">
-                {{#if feature_image}}
-                    <img class="hero-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
-                {{/if}}
-                <div class="hero-overlay"></div>
-                <div class="container hero-content">
-                    {{#if primary_tag}}
-                        <span class="hero-tag">{{primary_tag.name}}</span>
-                    {{/if}}
-                    <h2 class="hero-title"><a href="{{url}}">{{title}}</a></h2>
-                    {{#if excerpt}}
-                        <p class="hero-excerpt">{{excerpt}}</p>
-                    {{/if}}
-                </div>
-            </div>
+    {{#get "tags" limit="5" include="count.posts" order="count.posts desc" as |topTags|}}
+        {{#foreach topTags}}
+            {{#get "posts" filter="tag:{{slug}}" limit="1" as |tagPost|}}
+                {{#foreach tagPost}}
+                    <div class="hero-slide {{#if @../../first}}is-active{{/if}}" data-slide-img="{{#if feature_image}}{{img_url feature_image size="s"}}{{/if}}">
+                        {{#if feature_image}}
+                            <img class="hero-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+                        {{/if}}
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tag">{{../name}}</span>
+                            <h2 class="hero-title"><a href="{{url}}">{{title}}</a></h2>
+                            {{#if excerpt}}
+                                <p class="hero-excerpt">{{excerpt}}</p>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/foreach}}
+            {{/get}}
         {{/foreach}}
         
-        {{#if featured}}
+        {{#if topTags}}
             <div class="hero-nav">
                 <button aria-label="Previous slide" id="hero-prev">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -29,7 +31,7 @@
             </div>
             
             <div class="hero-dots">
-                {{#foreach featured}}
+                {{#foreach topTags}}
                     <button class="hero-dot {{#if @first}}is-active{{/if}}" data-slide-to="{{@index}}" aria-label="Go to slide {{@index}}"></button>
                 {{/foreach}}
             </div>
@@ -37,9 +39,9 @@
     {{else}}
         <div class="hero-slide is-active">
             <div class="hero-overlay"></div>
-            <div class="container hero-content">
+            <div class="hero-content">
                 <h2 class="hero-title">Welcome to Hanoi</h2>
-                <p class="hero-excerpt">Mark some posts as 'Featured' to see them here.</p>
+                <p class="hero-excerpt">Create some tags and posts to see them here.</p>
             </div>
         </div>
     {{/get}}

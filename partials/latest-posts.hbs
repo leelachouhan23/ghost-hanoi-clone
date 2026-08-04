@@ -14,15 +14,15 @@
                         
                         <div class="post-card-content">
                             <div class="post-card-meta">
-                                {{#if primary_tag}}
-                                    <span class="post-card-tag">{{primary_tag.name}}</span>
-                                {{/if}}
+                                {{#primary_tag}}
+                                    <a href="{{url}}" class="post-card-tag">{{name}}</a>
+                                {{/primary_tag}}
                             </div>
                             
                             <h3 class="post-card-title"><a href="{{url}}">{{title}}</a></h3>
                             
                             <div class="post-card-author-date">
-                                {{#foreach authors}}<span class="post-card-author">{{name}}</span>{{/foreach}}
+                                {{#foreach authors}}<a href="{{url}}" class="post-card-author">{{name}}</a>{{#unless @last}} &amp; {{/unless}}{{/foreach}}
                                 <span class="post-card-date">{{date format="MMMM DD, YYYY"}}</span>
                             </div>
                         </div>
