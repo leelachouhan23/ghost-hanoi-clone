@@ -853,3 +853,335 @@ button {
         font-size: 2.5rem;
     }
 }
+/* ==========================================================================
+   POST TEMPLATE
+   ========================================================================== */
+
+/* Post Hero */
+.post-hero {
+    position: relative;
+    height: 95vh;
+    min-height: 600px;
+    background-color: #111;
+    overflow: hidden;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+}
+
+.post-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.post-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+}
+
+.post-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    padding-bottom: 5rem;
+    padding-left: 2vw;
+    margin-left: 4vw;
+}
+
+.post-hero-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: #fff;
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.post-hero-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+}
+
+.post-hero-excerpt {
+    font-size: 1.2rem;
+    font-family: var(--font-sans);
+    max-width: 600px;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.post-hero-meta {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-sans);
+}
+
+.post-hero-meta .bull {
+    margin: 0 0.5rem;
+}
+
+.post-colors-btn {
+    position: absolute;
+    bottom: 3rem;
+    right: 4vw;
+    z-index: 10;
+    background: #f7ede2; /* Light creamy bg */
+    color: #000;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Content Wrap & Actions */
+.post-content-wrap {
+    max-width: 740px;
+    margin: 4rem auto;
+    padding: 0 4vw;
+}
+
+.post-actions-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f4f4f4;
+    padding: 0.4rem;
+    border-radius: 40px;
+    margin-bottom: 3rem;
+}
+
+.action-group {
+    display: flex;
+    align-items: center;
+}
+
+.action-group.right {
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #555;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: #e0e0e0;
+    color: #000;
+}
+
+.action-group > .action-btn {
+    background: transparent;
+}
+
+.action-text-size {
+    background: #e9e9e9;
+    border-radius: 20px;
+    padding: 2px;
+}
+
+.text-size-btn {
+    gap: 0.8rem;
+    padding: 0.4rem 1.2rem;
+}
+
+.text-size-btn .sm { font-size: 0.75rem; }
+.text-size-btn .md { font-size: 0.9rem; }
+.text-size-btn .lg { font-size: 1.1rem; font-weight: 600; }
+
+.action-btn .sep {
+    color: #aaa;
+    margin: 0 0.2rem;
+}
+
+/* Post Content Typography */
+.post-content {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #222;
+}
+
+.post-content p {
+    margin-bottom: 2rem;
+}
+
+/* Drop Cap */
+.post-content > p:first-of-type::first-letter {
+    float: left;
+    font-size: 6rem;
+    line-height: 0.8;
+    padding-right: 0.8rem;
+    padding-top: 0.4rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--c-text);
+}
+
+/* Blockquotes */
+.post-content blockquote {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-style: italic;
+    text-align: center;
+    border: none;
+    padding: 1rem 0;
+    margin: 4rem 0;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--c-text);
+}
+
+.post-content h2, 
+.post-content h3 {
+    font-family: var(--font-sans);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Ghost Gallery Styles */
+.kg-gallery-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1040px;
+    width: 100vw;
+    margin: 4rem 0 4rem 50%;
+    transform: translateX(-50%);
+}
+
+.kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.kg-gallery-image img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.kg-gallery-row:not(:first-of-type) {
+    margin-top: 1.5rem;
+}
+
+.kg-gallery-image:not(:first-of-type) {
+    margin-left: 1.5rem;
+}
+
+/* Bottom Actions & Author */
+.post-bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 4rem 0 3rem;
+    border-top: 1px solid var(--c-border);
+    padding-top: 3rem;
+}
+
+.post-bottom-actions .action-btn {
+    background: #f4f4f4;
+}
+
+.post-author-box {
+    margin-top: 2rem;
+}
+
+.author-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.author-cover {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.author-info {
+    padding: 0 3rem 3rem;
+    position: relative;
+}
+
+.author-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    object-fit: cover;
+    margin-top: -50px;
+    margin-bottom: 1.5rem;
+    background: #fff;
+}
+
+.author-avatar-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #000;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: -50px;
+    margin-bottom: 1.5rem;
+}
+
+.author-name {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.author-bio {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--c-text-light);
+    max-width: 600px;
+    margin-bottom: 1rem;
+}
+
+.author-location {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--c-text-lighter);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

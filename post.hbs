@@ -1,54 +1,89 @@
 {{!< default}}
 
-{{!--
-  post.hbs — Single post template
-  TODO (post-template owner): implement full article layout.
-  Stub below provides the minimum required by Ghost theme spec.
---}}
-
 {{#post}}
-<article class="article {{post_class}}" itemscope itemtype="https://schema.org/Article">
-
-    <header class="article-header container">
-        {{#if tags}}
-            <div class="article-tags">{{tags separator=" &bull; "}}</div>
-        {{/if}}
-        <h1 class="article-title" itemprop="headline">{{title}}</h1>
-        <div class="article-meta">
-            {{#foreach authors}}
-                <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <span itemprop="name">{{name}}</span>
-                </span>{{#unless @last}} &amp; {{/unless}}
-            {{/foreach}}
-            &middot;
-            <time itemprop="datePublished" datetime="{{date format="YYYY-MM-DD"}}">
-                {{date format="MMMM D, YYYY"}}
-            </time>
-            &middot; {{reading_time}}
-        </div>
-    </header>
+<article class="article {{post_class}}">
 
     {{#if feature_image}}
-    <div class="article-image-wrap container">
-        <img
-            class="article-image"
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            sizes="(max-width: 1000px) 100vw, 1000px"
-            src="{{img_url feature_image size="xl"}}"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-            itemprop="image"
-        />
-        {{#if feature_image_caption}}
-            <p class="article-image-caption">{{feature_image_caption}}</p>
+    <section class="post-hero">
+        <img class="post-hero-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy">
+        <div class="post-hero-overlay"></div>
+        <div class="post-hero-content container">
+            {{#if primary_tag}}
+                <span class="post-hero-tag">{{primary_tag.name}}</span>
+            {{/if}}
+            <h1 class="post-hero-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="post-hero-excerpt">{{custom_excerpt}}</p>
+            {{else if excerpt}}
+                <p class="post-hero-excerpt">{{excerpt}}</p>
+            {{/if}}
+            <div class="post-hero-meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                <span class="bull">&bull;</span> {{reading_time}}
+            </div>
+        </div>
+        <button class="post-colors-btn" aria-label="Theme Colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><circle cx="12" cy="12" r="4" fill="#a0522d"/></svg>
+            Colors
+        </button>
+    </section>
+    {{else}}
+    <header class="article-header container">
+        {{#if primary_tag}}
+            <div class="article-tags">{{primary_tag.name}}</div>
         {{/if}}
-    </div>
+        <h1 class="article-title">{{title}}</h1>
+        <div class="article-meta">
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+            <span class="bull">&bull;</span> {{reading_time}}
+        </div>
+    </header>
     {{/if}}
 
-    <div class="article-body container" itemprop="articleBody">
-        {{content}}
+    <div class="post-content-wrap container">
+        <div class="post-actions-bar">
+            <div class="action-group">
+                <button class="action-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Listen <span class="sep">&middot;</span> 4 min</button>
+            </div>
+            <div class="action-group action-text-size">
+                <button class="action-btn text-size-btn"><span class="sm">A</span> <span class="md">A</span> <span class="lg">A</span></button>
+            </div>
+            <div class="action-group right">
+                <button class="action-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Comments</button>
+                <button class="action-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> Share</button>
+            </div>
+        </div>
+
+        <div class="post-content gh-content" itemprop="articleBody">
+            {{content}}
+        </div>
+        
+        <div class="post-bottom-actions">
+            <button class="action-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Comments</button>
+            <button class="action-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> Share</button>
+        </div>
+
+        <section class="post-author-box">
+            {{#foreach authors}}
+            <div class="author-card">
+                <div class="author-cover" {{#if cover_image}}style="background-image: url({{img_url cover_image size="l"}})"{{else}}style="background-color: #222"{{/if}}></div>
+                <div class="author-info">
+                    {{#if profile_image}}
+                        <img class="author-avatar" src="{{img_url profile_image size="s"}}" alt="{{name}}">
+                    {{else}}
+                        <span class="author-avatar-fallback">{{name}}</span>
+                    {{/if}}
+                    <h3 class="author-name">{{name}}</h3>
+                    {{#if bio}}
+                        <p class="author-bio">{{bio}}</p>
+                    {{/if}}
+                    {{#if location}}
+                        <span class="author-location">{{location}}</span>
+                    {{/if}}
+                </div>
+            </div>
+            {{/foreach}}
+        </section>
     </div>
 
 </article>
