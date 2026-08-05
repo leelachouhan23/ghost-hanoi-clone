@@ -1,35 +1,15 @@
-<section class="latest-stories-section">
-    <div class="latest-stories-container">
-        <div class="posts-grid">
-            {{#if posts}}
-                {{#foreach posts}}
-                    {{> "post-card"}}
-                {{/foreach}}
-            {{else}}
-                {{#get "posts" limit="9" include="tags,authors"}}
-                    {{#foreach posts}}
-                        {{> "post-card"}}
-                    {{else}}
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--color-text-muted);">
-                            <p style="font-size: 1.2rem; font-weight: 500;">No posts found yet.</p>
-                            <p style="font-size: 0.95rem; margin-top: 8px;">Publish posts in Ghost Admin to see them appear here.</p>
-                        </div>
-                    {{/foreach}}
-                {{/get}}
-            {{/if}}
-        </div>
-
-        <!-- Pagination / Load More -->
-        {{#if pagination}}
-            <div class="pagination-container">
-                {{pagination}}
-            </div>
-        {{/if}}
+<section class="latest-posts">
+  <div class="latest-posts-inner">
+    <div class="post-grid">
+      {{#foreach posts}}
+        {{> "post-card"}}
+      {{/foreach}}
     </div>
-</section>
 
-<!-- Floating Colors Filter Pill (Hanoi Special Feature) -->
-<div class="floating-colors-widget" id="colorsWidget">
-    <span class="color-dot"></span>
-    <span>Colors</span>
-</div>
+    {{#if pagination.next}}
+      <div class="load-more-wrap">
+        <a class="load-more" href="{{page_url pagination.next}}">Load more</a>
+      </div>
+    {{/if}}
+  </div>
+</section>

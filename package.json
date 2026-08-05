@@ -1,22 +1,24 @@
 {
-  "name": "ghost-hanoi-clone",
-  "description": "A clone of the Hanoi theme for Ghost",
+  "name": "hanoi-clone",
   "version": "1.0.0",
-  "engines": {
-    "ghost": "^5.0.0"
-  },
-  "keywords": [
-    "ghost",
-    "theme",
-    "hanoi"
-  ],
-  "author": {
-    "name": "Development Team",
-    "email": "dev@example.com"
-  },
-  "license": "MIT",
   "config": {
-    "posts_per_page": 9,
-    "card_assets": true
+    "posts_per_page": 8,
+    "custom": {
+      "hero_title": {
+        "type": "text",
+        "default": "Latest Stories"
+      },
+      "brand_color": {
+        "type": "color",
+        "default": "#8a5a3b"
+      },
+      "mewsletter_image": {
+        "type": "color",
+        "default": "#8a5a3b"
+      },
+      "newsletter_image": {
+        "type": "image"
+      }
+    }
   }
 }

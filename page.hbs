@@ -1,19 +1,17 @@
 {{!< default}}
 
-{{> "header"}}
-
 {{#post}}
-<article class="post-content page-template">
-    <header class="latest-hero-banner">
-        <div class="latest-hero-container">
-            <h1 class="latest-page-title">{{title}}</h1>
-        </div>
-    </header>
+<article class="post-full page-full">
+  {{#if feature_image}}
+    <img class="post-full-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+  {{/if}}
 
-    <section class="latest-stories-section">
-        <div class="latest-stories-container">
-            {{content}}
-        </div>
-    </section>
+  <div class="post-full-content">
+    <h1 class="post-full-title">{{title}}</h1>
+
+    <div class="post-full-body gh-content gh-canvas">
+      {{content}}
+    </div>
+  </div>
 </article>
 {{/post}}

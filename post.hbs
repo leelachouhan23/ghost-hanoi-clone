@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{#post}}
+<article class="post-full">
+  {{#if feature_image}}
+    <img class="post-full-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+  {{/if}}
+
+  <div class="post-full-content">
+    {{#if primary_tag}}
+      <span class="post-card-tag">{{primary_tag.name}}</span>
+    {{/if}}
+
+    <h1 class="post-full-title">{{title}}</h1>
+
+    <div class="post-full-meta">
+      {{#foreach authors}}
+        <span>{{name}}</span>{{#unless @last}}, {{/unless}}
+      {{/foreach}}
+      · <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+    </div>
+
+    <div class="post-full-body gh-content gh-canvas">
+      {{content}}
+    </div>
+  </div>
+</article>
+
+{{#if @site.comments_enabled}}
+  {{comments}}
+{{/if}}
+{{/post}}

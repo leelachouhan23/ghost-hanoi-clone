@@ -1,0 +1,24 @@
+<section class="newsletter-signup">
+  <div class="newsletter-image">
+    {{#if @custom.newsletter_image}}
+      <img src="{{@custom.newsletter_image}}" alt="Newsletter">
+    {{/if}}
+  </div>
+  <div class="newsletter-content">
+    <h2>Letters from {{@site.title}}</h2>
+    <p>A quiet edit of new stories, images, references, and notes on creative culture.</p>
+
+    <form data-members-form="signup">
+      {{#foreach @site.newsletters}}
+        <label class="newsletter-option">
+          <input type="checkbox" name="newsletters" value="{{id}}" {{#if @first}}checked{{/if}}>
+          <span class="newsletter-option-title">{{name}}</span>
+          <span class="newsletter-option-desc">{{description}}</span>
+        </label>
+      {{/foreach}}
+
+      <input data-members-email type="email" placeholder="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>

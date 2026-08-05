@@ -1,0 +1,21 @@
+{{!< default}} <section class="tag-header"
+  style="padding: 3rem 2rem; background-color: #8a5a3b; color: #fff; text-align: center;">
+  {{#tag}}
+  <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">{{name}}</h1>
+  {{#if description}}
+  <p style="font-size: 1.1rem; opacity: 0.9;">{{description}}</p>
+  {{/if}}
+  {{/tag}}
+  </section>
+
+  <section class="latest-posts" style="padding: 2rem 0;">
+    <div class="post-grid">
+      {{#foreach posts}}
+      {{> "post-card"}}
+      {{/foreach}}
+    </div>
+
+    {{#if pagination.next}}
+    <a class="load-more" href="{{page_url pagination.next}}">Load more</a>
+    {{/if}}
+  </section>
