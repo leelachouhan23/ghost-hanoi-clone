@@ -5,7 +5,16 @@
                 {{#foreach tagPost}}
                     <div class="hero-slide {{#if @../../first}}is-active{{/if}}" data-slide-img="{{#if feature_image}}{{img_url feature_image size="s"}}{{/if}}">
                         {{#if feature_image}}
-                            <img class="hero-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+                            <img class="hero-image"
+                                srcset="{{img_url feature_image size="s"}} 300w,
+                                        {{img_url feature_image size="m"}} 600w,
+                                        {{img_url feature_image size="l"}} 1000w,
+                                        {{img_url feature_image size="xl"}} 2000w"
+                                sizes="100vw"
+                                src="{{img_url feature_image size="xl"}}"
+                                alt="{{title}}"
+                                {{#if @../first}}fetchpriority="high"{{else}}loading="lazy"{{/if}}
+                            >
                         {{/if}}
                         <div class="hero-overlay"></div>
                         <div class="hero-content">
