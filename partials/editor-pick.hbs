@@ -1,0 +1,25 @@
+<section class="editor-pick">
+
+{{#get "posts"
+filter="featured:true"
+limit="1"
+include="tags"}}
+
+{{#foreach posts}}
+
+<img src="{{feature_image}}"
+alt="{{title}}">
+
+<h2>{{title}}</h2>
+
+<p>{{excerpt}}</p>
+
+<a href="{{url}}">
+Read More
+</a>
+
+{{/foreach}}
+
+{{/get}}
+
+</section>
