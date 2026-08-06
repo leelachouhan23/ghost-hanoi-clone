@@ -6,32 +6,36 @@
   Stub below provides the minimum required by Ghost theme spec.
 --}}
 
-{{#page}}
-<article class="page-template {{post_class}}" itemscope itemtype="https://schema.org/WebPage">
+{{#post}}
+<article class="post-full page-full page-template {{post_class}}" itemscope itemtype="https://schema.org/WebPage">
 
-    {{#if @page.show_title_and_feature_image}}
-    <header class="article-header container">
-        <h1 class="article-title" itemprop="name">{{title}}</h1>
-    </header>
+  {{#if @page.show_title_and_feature_image}}
+  <header class="article-header container">
+    <h1 class="post-full-title article-title" itemprop="name">{{title}}</h1>
+  </header>
+  {{/if}}
 
-    {{#if feature_image}}
-    <div class="article-image-wrap container">
-        <img
-            class="article-image"
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w"
-            sizes="(max-width: 1000px) 100vw, 1000px"
-            src="{{img_url feature_image size="l"}}"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-        />
+  {{#if feature_image}}
+  <div class="article-image-wrap container">
+    <img
+      class="post-full-image article-image"
+      srcset="{{img_url feature_image size="s"}} 300w,
+              {{img_url feature_image size="m"}} 600w,
+              {{img_url feature_image size="l"}} 1000w"
+      sizes="(max-width: 1000px) 100vw, 1000px"
+      src="{{img_url feature_image size="xl"}}"
+      alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+    />
+  </div>
+  {{/if}}
+
+  <div class="post-full-content">
+    <h1 class="post-full-title">{{title}}</h1>
+
+    <div class="post-full-body article-body gh-content gh-canvas" itemprop="text">
+      {{content}}
     </div>
-    {{/if}}
-    {{/if}}
-
-    <div class="article-body container" itemprop="text">
-        {{content}}
-    </div>
+  </div>
 
 </article>
-{{/page}}
+{{/post}}
