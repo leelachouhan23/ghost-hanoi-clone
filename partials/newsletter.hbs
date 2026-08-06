@@ -1,0 +1,50 @@
+<section class="newsletter-section">
+    <div class="container">
+        <div class="nl-wrap">
+            <div class="nl-image-col">
+                <img class="nl-image"
+                    src="{{#if @custom.typewriter_image}}{{@custom.typewriter_image}}{{else}}{{asset 'images/typewriter.png'}}{{/if}}"
+                    alt="Typewriter" loading="lazy">
+            </div>
+            <div class="nl-content">
+                <h2 class="nl-title">Letters from hanoi</h2>
+                <p class="nl-desc">A quiet edit of new stories, images, references, and notes on creative culture.</p>
+
+                <form data-members-form="subscribe" class="nl-subscribe-form">
+                    <div class="nl-options">
+                        <label class="nl-option">
+                            <input type="checkbox" name="newsletter" value="weekly-edit" checked>
+                            <div class="nl-option-text">
+                                <strong>Weekly Edit</strong>
+                                <span>New stories and visual references from hanoi, sent once a week.</span>
+                            </div>
+                        </label>
+                        <label class="nl-option">
+                            <input type="checkbox" name="newsletter" value="field-notes">
+                            <div class="nl-option-text">
+                                <strong>Field Notes</strong>
+                                <span>Short observations on photography, interiors, travel, food, and place.</span>
+                            </div>
+                        </label>
+                        <label class="nl-option">
+                            <input type="checkbox" name="newsletter" value="studio-letter">
+                            <div class="nl-option-text">
+                                <strong>Studio Letter</strong>
+                                <span>Occasional notes on process, materials, and creative practice.</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="nl-form">
+                        <input data-members-email type="email" required="true" class="nl-input"
+                            placeholder="Email address" aria-label="Email address">
+                        <button type="submit" class="nl-btn">Subscribe</button>
+                    </div>
+                    <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to confirm
+                        your subscription.</div>
+                    <div class="message-error">Please enter a valid email address!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

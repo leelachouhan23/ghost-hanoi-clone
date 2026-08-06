@@ -1,0 +1,64 @@
+{{!--
+  partials/editors-pick-card.hbs
+  The visual card rendered by editors-pick.hbs.
+  Expects to be called inside a {{#foreach posts}} block so post context is available.
+--}}
+
+<section class="hanoi-pick" aria-labelledby="editors-pick-heading">
+    <div class="container hanoi-pick__inner">
+
+        {{! Left: text content }}
+        <div class="hanoi-pick__content">
+            <span class="hanoi-pick__eyebrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                     viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Editor's Pick
+            </span>
+
+            {{#primary_tag}}
+                <a class="hanoi-tag-label hanoi-tag-label--dark" href="{{url}}">{{name}}</a>
+            {{/primary_tag}}
+
+            <h2 class="hanoi-pick__title" id="editors-pick-heading">
+                <a href="{{url}}">{{title}}</a>
+            </h2>
+
+            <p class="hanoi-pick__excerpt">{{excerpt words="30"}}</p>
+
+            <div class="hanoi-pick__meta">
+                {{#foreach authors}}
+                    {{#if profile_image}}
+                        <img class="hanoi-author-avatar"
+                             src="{{img_url profile_image size="xs"}}"
+                             alt="{{name}}" />
+                    {{/if}}
+                    <span class="hanoi-author-name">{{name}}</span>{{#unless @last}}&thinsp;&amp;&thinsp;{{/unless}}
+                {{/foreach}}
+                <span class="hanoi-meta-sep" aria-hidden="true">&middot;</span>
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+            </div>
+
+            <a class="btn btn-primary hanoi-pick__cta" href="{{url}}">Read the story &rarr;</a>
+        </div>
+
+        {{! Right: feature image }}
+        {{#if feature_image}}
+        <div class="hanoi-pick__image-wrap">
+            <a href="{{url}}" tabindex="-1" aria-hidden="true">
+                <img
+                    class="hanoi-pick__image"
+                    srcset="{{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    loading="lazy"
+                />
+            </a>
+        </div>
+        {{/if}}
+
+    </div>
+</section>

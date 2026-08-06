@@ -1,0 +1,41 @@
+{{#get "posts" filter="tag:hash-editors-pick" limit="1" as |ep|}}
+    {{#if ep}}
+        {{#foreach ep}}
+        <section class="editors-pick-section">
+            {{#if feature_image}}
+                <img class="ep-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy">
+            {{/if}}
+            <div class="ep-overlay"></div>
+            <div class="container">
+                <div class="ep-content">
+                    <span class="ep-tag">Practice</span>
+                    <h2 class="ep-title"><a href="{{url}}">{{title}}</a></h2>
+                    {{#if excerpt}}
+                        <p class="ep-excerpt">{{excerpt}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+        {{/foreach}}
+    {{else}}
+        {{#get "posts" filter="featured:true" limit="1" as |fallback|}}
+            {{#foreach fallback}}
+            <section class="editors-pick-section">
+                {{#if feature_image}}
+                    <img class="ep-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="lazy">
+                {{/if}}
+                <div class="ep-overlay"></div>
+                <div class="container">
+                    <div class="ep-content">
+                        <span class="ep-tag">Editor's Pick</span>
+                        <h2 class="ep-title"><a href="{{url}}">{{title}}</a></h2>
+                        {{#if excerpt}}
+                            <p class="ep-excerpt">{{excerpt}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </section>
+            {{/foreach}}
+        {{/get}}
+    {{/if}}
+{{/get}}

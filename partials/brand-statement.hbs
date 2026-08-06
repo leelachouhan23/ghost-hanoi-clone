@@ -1,0 +1,17 @@
+<section class="brand-section">
+    <div class="container">
+        {{#if @custom.brand_statement}}
+            <h2 class="brand-text" id="brand-statement-text" data-image="{{#if @custom.typewriter_image}}{{@custom.typewriter_image}}{{else}}{{asset 'images/typewriter.jpg'}}{{/if}}">
+                {{@custom.brand_statement}}
+            </h2>
+        {{else}}
+            <h2 class="brand-text" id="brand-statement-text" data-image="{{#if @custom.typewriter_image}}{{@custom.typewriter_image}}{{else}}{{asset 'images/typewriter.jpg'}}{{/if}}">
+                A journal on design, interiors, photography, travel, and culture, for readers who notice how images and places [IMAGE] shape a story.
+            </h2>
+        {{/if}}
+        
+        <div class="brand-social">
+            {{> "social-links"}}
+        </div>
+    </div>
+</section>

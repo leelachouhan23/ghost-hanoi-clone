@@ -1,3 +1,26 @@
-<header>
-    <!-- Header Section -->
+<header class="site-header">
+    <div class="container">
+        <a href="{{@site.url}}" class="site-logo">
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" alt="{{@site.title}}">
+            {{else}}
+                <span>{{@site.title}}</span>
+            {{/if}}
+        </a>
+
+        <div class="nav-wrap">
+            <nav id="primary-nav" class="nav-primary-container">
+                {{navigation}}
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn" data-ghost-search aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
 </header>
