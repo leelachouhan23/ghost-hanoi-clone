@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="{{@site.locale}}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{meta_title}}</title>
+  <meta charset="utf-8">
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+  <link rel="icon" href="{{@site.icon}}">
+  <link rel="canonical" href="{{url absolute="true"}}">
 
-    <style>
-        :root {
-            {{#if @custom.heading_font}}
-            --font-heading: '{{@custom.heading_font}}', Georgia, serif;
-            {{/if}}
-            {{#if @custom.body_font}}
-            --font-body: '{{@custom.body_font}}', system-ui, sans-serif;
-            {{/if}}
-        }
-    </style>
+  <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
 
-    {{ghost_head}}
+  <style>
+    :root {
+      {{#if @custom.heading_font}}
+      --font-heading: '{{@custom.heading_font}}', Georgia, serif;
+      {{/if}}
+      {{#if @custom.body_font}}
+      --font-body: '{{@custom.body_font}}', system-ui, sans-serif;
+      {{/if}}
+    }
+  </style>
+
+  {{ghost_head}}
 </head>
 <body class="{{body_class}}">
 
-    {{> "header"}}
+  {{> "header"}}
 
-    <main class="site-main" id="main-content">
-        {{{body}}}
-    </main>
+  <main class="site-main" id="main-content">
+    {{{body}}}
+  </main>
 
-    {{> "newsletter"}}
-    {{> "footer"}}
+  {{> "newsletter"}}
+  {{> "footer"}}
 
-    <script src="{{asset "js/main.js"}}"></script>
-    {{ghost_foot}}
+  {{!-- {{> "footer"}} --}}
+
+  <script src="{{asset "js/main.js"}}"></script>
+  {{ghost_foot}}
 </body>
 </html>
