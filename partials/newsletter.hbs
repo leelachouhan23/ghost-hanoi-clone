@@ -35,35 +35,10 @@
 
             <form class="newsletter-form" data-members-form="subscribe">
                 <div class="newsletter-form-group">
-       https://github.com/leelachouhan23/ghost-hanoi-clone/pull/3/conflict?name=partials%252Fnewsletter.hbs&ancestor_oid=5a8c73366661297c94c9acd3218c16540e867253&base_oid=841cfe4a5b92d267c1d6627ebe492f668fb120ba&head_oid=b4f13e228bd581562e7e378eca597d549ee91e60             <input class="newsletter-input" data-members-email type="email" placeholder="Email address" required />
+                    <input class="newsletter-input" data-members-email type="email" placeholder="Email address" required />
                     <button class="newsletter-button" type="submit">Subscribe</button>
                 </div>
             </form>
         </div>
     </div>
-</section>
-
-<section class="newsletter-signup">
-  <div class="newsletter-image">
-    {{#if @custom.newsletter_image}}
-      <img src="{{@custom.newsletter_image}}" alt="Newsletter">
-    {{/if}}
-  </div>
-  <div class="newsletter-content">
-    <h2>Letters from {{@site.title}}</h2>
-    <p>A quiet edit of new stories, images, references, and notes on creative culture.</p>
-
-    <form data-members-form="signup">
-      {{#foreach @site.newsletters}}
-        <label class="newsletter-option">
-          <input type="checkbox" name="newsletters" value="{{id}}" {{#if @first}}checked{{/if}}>
-          <span class="newsletter-option-title">{{name}}</span>
-          <span class="newsletter-option-desc">{{description}}</span>
-        </label>
-      {{/foreach}}
-
-      <input data-members-email type="email" placeholder="Email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
 </section>

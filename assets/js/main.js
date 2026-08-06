@@ -389,4 +389,14 @@ document.addEventListener('DOMContentLoaded', function () {
     layoutLinksContainer.style.visibility = 'visible';
   }
 
+  // ═══════════════════════════════════════════════════════════════════════
+  // 8. Mobile Menu Toggle
+  // ═══════════════════════════════════════════════════════════════════════
+  const menuToggle = document.querySelector('.menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      document.body.classList.toggle('is-menu-open');
+    });
+  }
+
 });
