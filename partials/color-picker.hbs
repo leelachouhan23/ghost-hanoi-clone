@@ -1,0 +1,115 @@
+<div class="color-picker-widget" id="colorPickerWidget">
+    <!-- Popover Box -->
+    <div class="color-picker-popover" id="colorPickerPopover">
+        <div class="color-picker-header">
+            <h3 class="color-picker-heading">Try colors</h3>
+        </div>
+
+        <div class="color-presets-list">
+            <!-- Preset Item: Custom -->
+            <button type="button" class="color-preset-item active" data-preset="custom" data-bg="#ffffff"
+                data-text="#1f2518" data-accent="#7b4d2b">
+                <span class="preset-name">Custom Colors</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #ffffff; border: 1px solid #ddd;"></span>
+                    <span class="swatch-pill" style="background: #1f2518;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+
+            <!-- Preset Item: Default -->
+            <button type="button" class="color-preset-item" data-preset="default" data-bg="#f9f7f2" data-text="#1f2518"
+                data-accent="#7b4d2b">
+                <span class="preset-name">Default Colors</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #f9f7f2;"></span>
+                    <span class="swatch-pill" style="background: #1f2518;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+
+            <!-- Preset Item: Soft Plum -->
+            <button type="button" class="color-preset-item" data-preset="plum" data-bg="#eae5ec" data-text="#221d24"
+                data-accent="#7b4d2b">
+                <span class="preset-name">Soft Plum</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #eae5ec;"></span>
+                    <span class="swatch-pill" style="background: #221d24;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+
+            <!-- Preset Item: Dark Charcoal -->
+            <button type="button" class="color-preset-item" data-preset="charcoal" data-bg="#1a1a1a" data-text="#f4f1ea"
+                data-accent="#7b4d2b">
+                <span class="preset-name">Dark Charcoal</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #1a1a1a;"></span>
+                    <span class="swatch-pill" style="background: #f4f1ea;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+
+            <!-- Preset Item: Dark Moss -->
+            <button type="button" class="color-preset-item" data-preset="moss" data-bg="#232a21" data-text="#f4f1ea"
+                data-accent="#7b4d2b">
+                <span class="preset-name">Dark Moss</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #232a21;"></span>
+                    <span class="swatch-pill" style="background: #f4f1ea;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+
+            <!-- Preset Item: Dark Claret -->
+            <button type="button" class="color-preset-item" data-preset="claret" data-bg="#2b1b22" data-text="#f4f1ea"
+                data-accent="#7b4d2b">
+                <span class="preset-name">Dark Claret</span>
+                <span class="preset-swatches">
+                    <span class="swatch-pill" style="background: #2b1b22;"></span>
+                    <span class="swatch-pill" style="background: #f4f1ea;"></span>
+                    <span class="swatch-pill" style="background: #7b4d2b;"></span>
+                </span>
+            </button>
+        </div>
+
+        <!-- Custom Color Controls Card -->
+        <div class="color-custom-card">
+            <div class="color-picker-row">
+                <label class="color-label">Background</label>
+                <div class="color-input-wrap">
+                    <span class="hex-code" id="hexBg">#FFFFFF</span>
+                    <input type="color" id="pickerBg" value="#ffffff" class="color-swatch-input"
+                        aria-label="Background Color" />
+                </div>
+            </div>
+
+            <div class="color-picker-row">
+                <label class="color-label">Text</label>
+                <div class="color-input-wrap">
+                    <span class="hex-code" id="hexText">#1F2518</span>
+                    <input type="color" id="pickerText" value="#1f2518" class="color-swatch-input"
+                        aria-label="Text Color" />
+                </div>
+            </div>
+
+            <div class="color-picker-row">
+                <label class="color-label">Accent</label>
+                <div class="color-input-wrap">
+                    <span class="hex-code" id="hexAccent">#7B4D2B</span>
+                    <input type="color" id="pickerAccent" value="#7b4d2b" class="color-swatch-input"
+                        aria-label="Accent Color" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <button type="button" class="color-picker-trigger" id="colorPickerTrigger" aria-label="Toggle Color Options">
+        <span class="color-swatch-dots">
+            <span class="dot-brown"></span>
+            <span class="dot-dark"></span>
+        </span>
+        <span class="trigger-text" id="colorTriggerText">Colors</span>
+    </button>
+</div>

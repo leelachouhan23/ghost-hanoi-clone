@@ -1,0 +1,44 @@
+{{!< default}}
+
+{{#post}}
+<div class="archive-hero all-stories-hero">
+    <div class="container archive-hero-content">
+        <h1 class="archive-title">{{title}}</h1>
+        {{#if custom_excerpt}}
+            <p class="archive-description">{{custom_excerpt}}</p>
+        {{/if}}
+    </div>
+</div>
+{{/post}}
+
+<main class="site-main container all-stories-main">
+    <section class="all-stories-section">
+        <div class="all-stories-list">
+            {{#get "posts" limit="all" order="published_at desc"}}
+                {{#foreach posts}}
+                    <article class="all-stories-item">
+                        <div class="all-stories-item-left">
+                            <h2 class="all-stories-item-title">
+                                <a href="{{url}}">{{title}}</a>
+                            </h2>
+                        </div>
+
+                        <div class="all-stories-hover-image-wrap">
+                            {{#if feature_image}}
+                                <img class="all-stories-hover-image" src="{{img_url feature_image size="m"}}" alt="{{title}}" />
+                            {{else}}
+                                <img class="all-stories-hover-image" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" alt="{{title}}" />
+                            {{/if}}
+                        </div>
+
+                        <time class="all-stories-item-date" datetime="{{date format="YYYY-MM-DD"}}">
+                            {{date format="MMM D, YYYY"}}
+                        </time>
+                    </article>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </section>
+
+    {{> "newsletter"}}
+</main>

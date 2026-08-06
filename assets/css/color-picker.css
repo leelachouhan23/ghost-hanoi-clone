@@ -1,0 +1,198 @@
+/* Color Picker Theme Switcher Styles */
+
+:root {
+    --color-bg: #ffffff;
+    --color-text: #1f2518;
+    --color-accent: #7b4d2b;
+}
+
+/* Floating Color Switcher Widget (Bottom Right) */
+.color-picker-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.color-picker-trigger {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 9999px;
+    padding: 8px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.color-picker-trigger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+.color-swatch-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.dot-brown {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #7b4d2b;
+}
+
+.dot-dark {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #1f2518;
+}
+
+/* Popover Panel */
+.color-picker-popover {
+    position: absolute;
+    bottom: 52px;
+    right: 0;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    color: #1a1a1a;
+}
+
+.color-picker-popover.active {
+    display: flex;
+}
+
+.color-picker-header {
+    margin-bottom: 2px;
+}
+
+.color-picker-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+/* Presets List */
+.color-presets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.color-preset-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f4f4f4;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.color-preset-item:hover {
+    background: #e8e8e8;
+}
+
+.color-preset-item.active {
+    background: #e5e5e5;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.preset-name {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.preset-swatches {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 22px;
+    width: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.swatch-pill {
+    flex: 1;
+    height: 100%;
+}
+
+/* Custom Controls Card */
+.color-custom-card {
+    background: #f4f4f4;
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.color-picker-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.color-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333333;
+}
+
+.color-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hex-code {
+    font-size: 0.85rem;
+    font-family: monospace;
+    color: #666666;
+}
+
+.color-swatch-input {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    width: 32px;
+    height: 24px;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+}
+
+.color-swatch-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-swatch-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 3px;
+}
