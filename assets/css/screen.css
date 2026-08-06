@@ -3,7 +3,7 @@
  * Complete rewrite matching AspireThemes design 
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 
 :root {
     /* Colors */
@@ -52,6 +52,7 @@ body {
     background-color: var(--c-bg);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 img {
@@ -150,6 +151,15 @@ button {
     color: #fff;
 }
 
+/* Inner pages without a dark hero get a relative, light header */
+body:not(:has(.hero-section)):not(:has(.post-hero)) .site-header {
+    position: relative;
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--c-border);
+}
+
 .site-header .container {
     display: flex;
     align-items: center;
@@ -177,6 +187,7 @@ button {
     padding: 0.5rem 1.5rem;
     border-radius: 40px;
     backdrop-filter: blur(10px);
+    color: #fff;
 }
 
 .nav-primary {
@@ -276,6 +287,15 @@ button {
     color: inherit;
     display: flex;
     align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: inherit;
+    align-items: center;
+    cursor: pointer;
 }
 
 /* ==========================================================================
@@ -875,6 +895,62 @@ button {
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 900px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-wrap {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 0;
+        padding: 2rem;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+    
+    body.is-menu-open .nav-wrap {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-primary {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .mega-menu-dropdown {
+        position: static;
+        width: 100%;
+        transform: none;
+        box-shadow: none;
+        grid-template-columns: 1fr;
+        padding: 1rem 0 0;
+        background: transparent;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+    }
+    
+    .has-dropdown:hover .mega-menu-dropdown {
+        display: grid;
+    }
+    
+    .mega-menu-image {
+        display: none;
+    }
+
     .post-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -897,17 +973,37 @@ button {
         grid-template-columns: 1fr;
     }
 
-    .nav-wrap {
-        display: none;
-    }
-
-    /* Real mobile menu needed in main.js */
     .brand-text {
         font-size: 2rem;
     }
 
     .ep-title {
         font-size: 2.5rem;
+    }
+
+    .post-actions-bar {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .action-group.right {
+        justify-content: space-between;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .author-info {
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .nl-content {
+        padding: 1.5rem;
+    }
+
+    .tags-card {
+        flex: 0 0 220px;
     }
 }
 /* ==========================================================================
@@ -1131,10 +1227,18 @@ button {
 .kg-gallery-container {
     display: flex;
     flex-direction: column;
-    max-width: 1040px;
+    max-width: 100%;
     width: 100vw;
     margin: 4rem 0 4rem 50%;
     transform: translateX(-50%);
+}
+
+@media (max-width: 1040px) {
+    .kg-gallery-container {
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+    }
 }
 
 .kg-gallery-row {
