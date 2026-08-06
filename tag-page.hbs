@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{#tag}}
+<div class="archive-hero" style="{{#if feature_image}}background-image: url({{img_url feature_image size='xl'}});{{else}}background-image: url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=2000&auto=format&fit=crop');{{/if}}">
+    <div class="archive-hero-overlay"></div>
+    
+    <div class="container archive-hero-content">
+        <h1 class="archive-title">{{name}}</h1>
+        {{#if description}}
+            <p class="archive-description">{{description}}</p>
+        {{/if}}
+    </div>
+</div>
+{{/tag}}
+
+<main class="site-main container">
+    <div class="post-feed">
+        {{#foreach posts}}
+            {{> "post-card"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+    {{> "newsletter"}}
+</main>

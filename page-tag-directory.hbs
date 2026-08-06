@@ -1,0 +1,39 @@
+{{!< default}}
+
+{{#post}}
+<div class="archive-hero" style="{{#if feature_image}}background-image: url({{img_url feature_image size='xl'}});{{else}}background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2000&auto=format&fit=crop');{{/if}}">
+    <div class="archive-hero-overlay"></div>
+    
+    <div class="container archive-hero-content">
+        <h1 class="archive-title">{{title}}</h1>
+        {{#if custom_excerpt}}
+            <p class="archive-description">{{custom_excerpt}}</p>
+        {{else if excerpt}}
+            <p class="archive-description">{{excerpt}}</p>
+        {{else}}
+            <p class="archive-description">Browse Hanoi topics across design, interiors, photography, travel, culture, music, food, and creative practice.</p>
+        {{/if}}
+    </div>
+</div>
+{{/post}}
+
+<main class="site-main container">
+    <section class="tag-directory-section">
+        <div class="tags-grid">
+            {{#get "tags" limit="all" include="count.posts" order="name asc"}}
+                {{#foreach tags}}
+                    <a href="{{url}}" class="tag-directory-card">
+                        <div class="tag-directory-image" style="background-image: url('{{#if feature_image}}{{img_url feature_image size="m"}}{{else}}https://images.unsplash.com/photo-1511370235399-1802cae1d32f?q=80&w=800&auto=format&fit=crop{{/if}}');"></div>
+                        <div class="tag-directory-overlay"></div>
+                        <div class="tag-directory-content">
+                            <h2 class="tag-directory-name">{{name}}</h2>
+                        </div>
+                        <div class="tag-directory-bar" style="{{#if accent_color}}background-color: {{accent_color}};{{/if}}"></div>
+                    </a>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </section>
+
+    {{> "newsletter"}}
+</main>

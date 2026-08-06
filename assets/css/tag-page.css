@@ -1,0 +1,326 @@
+/* Tag Page Styles */
+
+/* Base Container & Main Section */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.site-main {
+    padding: 4rem 0 0 0;
+}
+
+/* Tag Archive Hero Header */
+.archive-hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.archive-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.85) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.archive-hero-content {
+    position: relative;
+    z-index: 10;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.archive-title {
+    font-family: 'Georgia', serif;
+    font-size: 4.25rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #ffffff !important;
+}
+
+.archive-description {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    max-width: 650px;
+    color: rgba(255, 255, 255, 0.95) !important;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Hide Author Avatar Icons below Post Cards on Tag Pages */
+.tag-template .author-list,
+.tag-template .author-profile-image,
+.tag-template .static-avatar {
+    display: none !important;
+}
+
+/* Newsletter Subscribe Section (Letters from hanoi) */
+.newsletter-section {
+    margin: 5rem 0 0 0;
+    width: 100%;
+}
+
+.newsletter-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgba(128, 128, 128, 0.08);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.newsletter-image-wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    position: relative;
+}
+
+.newsletter-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.newsletter-content {
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newsletter-title {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text) !important;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.15;
+}
+
+.newsletter-subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-text) !important;
+    opacity: 0.85;
+    margin: 0 0 2rem 0;
+    line-height: 1.5;
+}
+
+.newsletter-options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.25rem;
+}
+
+.newsletter-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+    cursor: pointer;
+}
+
+.newsletter-option:first-child {
+    padding-top: 0;
+}
+
+.newsletter-option:last-child {
+    border-bottom: none;
+}
+
+.newsletter-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-text);
+    border-radius: 3px;
+    margin-top: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.newsletter-checkbox:checked {
+    background-color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+}
+
+.newsletter-checkbox:checked::after {
+    content: '';
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+}
+
+.newsletter-option-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter-option-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text) !important;
+    line-height: 1.3;
+}
+
+.newsletter-option-desc {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.88rem;
+    color: var(--color-text) !important;
+    opacity: 0.75;
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+.newsletter-form-group {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.newsletter-input {
+    flex: 1;
+    height: 50px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 0 16px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.newsletter-input::placeholder {
+    color: #888888;
+}
+
+.newsletter-button {
+    height: 50px;
+    background-color: var(--color-accent) !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 4px;
+    padding: 0 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.newsletter-button:hover {
+    opacity: 0.9;
+}
+
+/* Tag Page Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .archive-hero {
+        min-height: 480px;
+    }
+
+    .archive-title {
+        font-size: 3.25rem;
+    }
+
+    .archive-description {
+        font-size: 1.15rem;
+    }
+
+    .site-main {
+        padding: 3rem 0 0 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .newsletter-card {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-image-wrap {
+        min-height: 280px;
+    }
+
+    .newsletter-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .newsletter-form-group {
+        flex-direction: column;
+    }
+
+    .newsletter-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .archive-hero {
+        min-height: 400px;
+    }
+
+    .archive-hero-content {
+        padding-bottom: 3rem;
+        padding-top: 3rem;
+    }
+
+    .archive-title {
+        font-size: 2.5rem;
+    }
+
+    .archive-description {
+        font-size: 1.05rem;
+    }
+
+    .newsletter-title {
+        font-size: 2rem;
+    }
+
+    .newsletter-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .archive-title {
+        font-size: 2.15rem;
+    }
+    
+    .newsletter-content {
+        padding: 2rem 1.25rem;
+    }
+}

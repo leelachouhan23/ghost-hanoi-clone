@@ -1,0 +1,273 @@
+/* Author Page Styles */
+
+.author-hero {
+    min-height: 680px;
+}
+
+.author-hero-content {
+    padding-bottom: 5.5rem !important;
+    padding-top: 8rem !important;
+}
+
+.author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+.author-title {
+    font-size: 4.25rem;
+    margin: 0 0 1rem 0;
+    line-height: 1.08;
+}
+
+.author-bio {
+    font-size: 1.25rem;
+    max-width: 620px;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.author-location {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-bottom: 1.5rem;
+}
+
+.author-social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.author-social-links a {
+    color: #ffffff !important;
+    opacity: 0.92;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.author-social-links a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Author Page 4-Column Feed Layout */
+.author-main {
+    padding: 4.5rem 0 4rem 0;
+    max-width: 1280px;
+    width: 100%;
+}
+
+.author-post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+    width: 100%;
+}
+
+.author-post-card {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    text-decoration: none;
+}
+
+.author-post-image-wrap {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-bottom: 1.1rem;
+    background-color: #1a1a1a;
+}
+
+.author-post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.author-post-card:hover .author-post-image {
+    transform: scale(1.04);
+}
+
+.author-post-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.author-post-tag {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 0.92rem !important;
+    font-weight: 400 !important;
+    color: var(--color-text, #1f2518) !important;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+    opacity: 0.85;
+}
+
+.author-post-title,
+.author-post-title a {
+    font-family: 'Georgia', serif !important;
+    font-size: 1.55rem !important;
+    font-weight: 400 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 0.45rem 0;
+    letter-spacing: -0.01em;
+    color: var(--color-text, #1f2518) !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.author-post-title a:hover {
+    opacity: 0.75;
+}
+
+.author-post-meta {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-top: 0.1rem;
+}
+
+.author-post-authors,
+.author-post-authors a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 0.92rem !important;
+    font-weight: 400 !important;
+    color: var(--color-text, #1f2518) !important;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.author-post-date {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 400 !important;
+    color: var(--color-text, #1f2518) !important;
+    opacity: 0.65;
+}
+
+.author-load-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.author-load-more-btn {
+    background-color: var(--color-accent, #7b4d2b) !important;
+    color: #ffffff !important;
+    padding: 0.85rem 2.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.author-load-more-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Author Page Responsive Breakpoints */
+@media (max-width: 1100px) {
+    .author-post-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem 1.75rem;
+    }
+
+    .author-hero {
+        min-height: 520px;
+    }
+
+    .author-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .author-hero {
+        min-height: 440px;
+    }
+
+    .author-hero-content {
+        padding-bottom: 4rem !important;
+        padding-top: 6rem !important;
+    }
+
+    .author-avatar {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1.2rem;
+    }
+
+    .author-title {
+        font-size: 2.75rem;
+    }
+
+    .author-bio {
+        font-size: 1.1rem;
+    }
+
+    .author-main {
+        padding: 3rem 0 3rem 0;
+    }
+
+    .author-post-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.25rem;
+    }
+
+    .author-post-title,
+    .author-post-title a {
+        font-size: 1.35rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .author-avatar {
+        width: 84px;
+        height: 84px;
+    }
+
+    .author-title {
+        font-size: 2.2rem;
+    }
+
+    .author-bio {
+        font-size: 1rem;
+    }
+
+    .author-post-grid {
+        grid-template-columns: 1fr;
+        gap: 1.85rem;
+    }
+
+    .author-post-title,
+    .author-post-title a {
+        font-size: 1.25rem !important;
+    }
+}
