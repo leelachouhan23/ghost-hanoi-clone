@@ -15,11 +15,38 @@
     <link rel="stylesheet" href="{{asset "css/responsive.css"}}">
     <link rel="stylesheet" href="{{asset "css/color-picker.css"}}">
 
+<head>
+  <meta charset="utf-8">
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="{{@site.icon}}">
+  <link rel="canonical" href="{{url absolute="true"}}">
+
+  <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+  <style>
+    :root {
+      {{#if @custom.heading_font}}
+      --font-heading: '{{@custom.heading_font}}', Georgia, serif;
+      {{/if}}
+      {{#if @custom.body_font}}
+      --font-body: '{{@custom.body_font}}', system-ui, sans-serif;
+      {{/if}}
+    }
+  </style>
+
+  {{ghost_head}}
 </head>
 
 <body class="{{body_class}}">
 
-    {{> "header"}}
+  {{> "header"}}
+
+  <main class="site-main" id="main-content">
+    {{{body}}}
+  </main>
 
     {{{body}}}
 
@@ -32,6 +59,13 @@
     <script src="{{asset "js/main.js"}}"></script>
     <script src="{{asset "js/color-picker.js"}}"></script>
 
+  {{> "newsletter"}}
+  {{> "footer"}}
+
+  {{!-- {{> "footer"}} --}}
+
+  <script src="{{asset "js/main.js"}}"></script>
+  {{ghost_foot}}
 </body>
 
 </html>
