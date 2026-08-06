@@ -1,0 +1,124 @@
+{{!< default}} {{#post}} <div class="archive-hero"
+    style="{{#if feature_image}}background-image: url({{img_url feature_image size='xl'}});{{else}}background-image: url('https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=2000&auto=format&fit=crop');{{/if}}">
+    <div class="archive-hero-overlay"></div>
+
+    <div class="container archive-hero-content">
+        <h1 class="archive-title">{{title}}</h1>
+        {{#if custom_excerpt}}
+        <p class="archive-description">{{custom_excerpt}}</p>
+        {{else if excerpt}}
+        <p class="archive-description">{{excerpt}}</p>
+        {{else}}
+        <p class="archive-description">Meet the writers, editors, and collaborators behind the publication.</p>
+        {{/if}}
+    </div>
+    </div>
+    {{/post}}
+
+    <main class="site-main container authors-directory-main">
+        <section class="authors-directory-section">
+            <div class="authors-grid">
+                {{#get "authors" limit="all" include="count.posts"}}
+                {{#foreach authors}}
+                <div class="author-dir-card">
+                    <div class="author-dir-cover"
+                        style="background-image: url('{{#if cover_image}}{{img_url cover_image size="
+                        m"}}{{else}}https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop{{/if}}');">
+                    </div>
+                    <div class="author-dir-body">
+                        <a href="{{url}}" class="author-dir-avatar-link">
+                            {{#if profile_image}}
+                            <img class="author-dir-avatar" src="{{img_url profile_image size=" s"}}" alt="{{name}}" />
+                            {{else}}
+                            <img class="author-dir-avatar"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"
+                                alt="{{name}}" />
+                            {{/if}}
+                        </a>
+                        <h2 class="author-dir-name"><a href="{{url}}">{{name}}</a></h2>
+                        {{#if bio}}
+                        <p class="author-dir-bio">{{bio}}</p>
+                        {{else}}
+                        <p class="author-dir-bio">Emma writes about photography, travel, culture, and the field notes
+                            that turn everyday places into lasting stories.</p>
+                        {{/if}}
+                        {{#if location}}
+                        <div class="author-dir-location">{{location}}</div>
+                        {{else}}
+                        <div class="author-dir-location">New York, USA</div>
+                        {{/if}}
+                        <div class="author-dir-social">
+                            {{#if website}}
+                            <a href="{{website}}" target="_blank" rel="noopener" aria-label="Website">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </a>
+                            {{/if}}
+                            {{!-- <a href="https://x.com" target="_blank" rel="noopener" aria-label="X">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a> --}}
+                            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z" />
+                                </svg>
+                            </a>
+                            {{!-- <a href="https://bsky.app" target="_blank" rel="noopener" aria-label="Bluesky">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566 1.01 1 1.854 1 4.542c0 2.688.75 9.538 1.18 11.205.7 2.7 3.52 3.4 6.02 2.9 4.36-.87 3.8-5.847 3.8-5.847s-.56 4.977 3.8 5.847c2.5.5 5.32-.2 6.02-2.9.43-1.667 1.18-8.517 1.18-11.205 0-2.688-1.566-3.532-4.202-1.737C16.046 4.747 13.087 8.686 12 10.8z" />
+                                </svg>
+                            </a> --}}
+                            {{!-- <a href="https://threads.net" target="_blank" rel="noopener" aria-label="Threads">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M12.186 24.004c-3.15 0-5.841-.954-7.697-2.73C2.553 19.426 1.637 16.48 1.637 12.3c0-4.148.98-7.118 2.87-8.971C6.398 1.492 9.096.536 12.285.536c3.275 0 5.992.983 7.857 2.843 1.777 1.77 2.72 4.541 2.72 8.01 0 3.896-1.077 6.804-3.11 8.411-1.631 1.288-3.714 1.868-6.195 1.72-1.583-.095-2.884-.52-3.864-1.267-.938-.716-1.527-1.684-1.75-2.876-.118-.635-.078-1.37.119-2.184.288-1.189.873-2.316 1.74-3.351.986-1.176 2.274-2.072 3.829-2.664.887-.338 1.865-.536 2.908-.588l.583-.024v-.253c0-1.464-.326-2.585-.97-3.332-.619-.716-1.562-1.08-2.805-1.08-1.18 0-2.09.33-2.707.98-.535.565-.828 1.349-.87 2.33h-2.81c.05-1.79.68-3.267 1.875-4.385C10.016 1.773 11.83 1.2 13.9 1.2c2.27 0 4.027.643 5.223 1.91 1.156 1.226 1.742 2.97 1.742 5.183v5.626c0 1.956.402 3.251 1.196 3.85.496.374 1.184.561 2.046.561.42 0 .84-.047 1.25-.14v2.455a9.77 9.77 0 0 1-2.12.235c-1.79 0-3.142-.486-4.02-1.445-.63-.687-1.01-1.636-1.13-2.846-.86 1.05-1.92 1.84-3.15 2.35-1.19.49-2.45.72-3.75.72zm.28-7.794c-1.04 0-1.95.27-2.7.8-.71.51-1.08 1.22-1.08 2.11 0 .88.35 1.57 1.04 2.06.72.51 1.66.77 2.8.77 1.18 0 2.21-.32 3.07-.96.89-.66 1.4-1.58 1.52-2.74-.82.13-1.65.19-2.47.19h-2.18z" />
+                                </svg>
+                            </a> --}}
+                            {{!-- <a href="https://mastodon.social" target="_blank" rel="noopener"
+                                aria-label="Mastodon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M23.268 5.313c-.35-2.578-2.617-4.61-5.3-5.004C15.54.015 12.012 0 12.012 0h-.024s-3.527.015-5.955.309c-2.684.394-4.95 2.426-5.3 5.004-.32 2.378-.34 5.399-.34 8.08 0 1.23.01 2.46.03 3.69.07 2.47.46 4.9 2.05 6.84 1.4 1.71 3.27 2.5 5.58 2.67 2.83.21 5.64.08 8.44-.39 2.24-.37 4.09-1.4 5.05-3.54.55-1.22.75-2.58.78-3.92.02-1.23.03-2.46.03-3.69 0-2.68-.02-5.702-.34-8.08zm-4.71 10.45h-2.5v-6.3c0-1.33-.56-2.01-1.68-2.01-1.24 0-1.86.8-1.86 2.38v3.45h-2.49v-3.45c0-1.58-.62-2.38-1.86-2.38-1.12 0-1.68.68-1.68 2.01v6.3h-2.5V9.22c0-1.33.34-2.39 1.02-3.18.68-.79 1.58-1.2 2.69-1.2 1.3 0 2.3.49 3.01 1.48.71-.99 1.71-1.48 3.01-1.48 1.11 0 2.01.41 2.69 1.2.68.79 1.02 1.85 1.02 3.18v6.54z" />
+                                </svg>
+                            </a> --}}
+                            {{!-- <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-1.39h.09V9.08a6.34 6.34 0 1 0 6.25 6.33V9.67a8.27 8.27 0 0 0 4.77 1.52V7.75a4.83 4.83 0 0 1-1-.06z" />
+                                </svg>
+                            </a> --}}
+                            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{/foreach}}
+                {{/get}}
+            </div>
+        </section>
+
+        {{> "newsletter"}}
+    </main>

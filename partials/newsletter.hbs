@@ -1,50 +1,44 @@
 <section class="newsletter-section">
-    <div class="container">
-        <div class="nl-wrap">
-            <div class="nl-image-col">
-                <img class="nl-image"
-                    src="{{#if @custom.typewriter_image}}{{@custom.typewriter_image}}{{else}}{{asset 'images/typewriter.png'}}{{/if}}"
-                    alt="Typewriter" loading="lazy">
-            </div>
-            <div class="nl-content">
-                <h2 class="nl-title">Letters from hanoi</h2>
-                <p class="nl-desc">A quiet edit of new stories, images, references, and notes on creative culture.</p>
+    <div class="newsletter-card">
+        <div class="newsletter-image-wrap">
+            <img src="{{#if @custom.newsletter_image}}{{@custom.newsletter_image}}{{else}}https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=1200&auto=format&fit=crop{{/if}}" alt="{{#if @custom.newsletter_title}}{{@custom.newsletter_title}}{{else}}Letters from {{@site.title}}{{/if}}" class="newsletter-image" />
+        </div>
+        <div class="newsletter-content">
+            <h2 class="newsletter-title">{{#if @custom.newsletter_title}}{{@custom.newsletter_title}}{{else}}Letters from {{@site.title}}{{/if}}</h2>
+            <p class="newsletter-subtitle">{{#if @custom.newsletter_description}}{{@custom.newsletter_description}}{{else}}A quiet edit of new stories, images, references, and notes on creative culture.{{/if}}</p>
 
-                <form data-members-form="subscribe" class="nl-subscribe-form">
-                    <div class="nl-options">
-                        <label class="nl-option">
-                            <input type="checkbox" name="newsletter" value="weekly-edit" checked>
-                            <div class="nl-option-text">
-                                <strong>Weekly Edit</strong>
-                                <span>New stories and visual references from hanoi, sent once a week.</span>
-                            </div>
-                        </label>
-                        <label class="nl-option">
-                            <input type="checkbox" name="newsletter" value="field-notes">
-                            <div class="nl-option-text">
-                                <strong>Field Notes</strong>
-                                <span>Short observations on photography, interiors, travel, food, and place.</span>
-                            </div>
-                        </label>
-                        <label class="nl-option">
-                            <input type="checkbox" name="newsletter" value="studio-letter">
-                            <div class="nl-option-text">
-                                <strong>Studio Letter</strong>
-                                <span>Occasional notes on process, materials, and creative practice.</span>
-                            </div>
-                        </label>
+            <div class="newsletter-options">
+                <label class="newsletter-option">
+                    <input type="checkbox" class="newsletter-checkbox" checked />
+                    <div class="newsletter-option-text">
+                        <span class="newsletter-option-title">Weekly Edit</span>
+                        <span class="newsletter-option-desc">New stories and visual references from {{@site.title}}, sent once a week.</span>
                     </div>
+                </label>
 
-                    <div class="nl-form">
-                        <input data-members-email type="email" required="true" class="nl-input"
-                            placeholder="Email address" aria-label="Email address">
-                        <button type="submit" class="nl-btn">Subscribe</button>
+                <label class="newsletter-option">
+                    <input type="checkbox" class="newsletter-checkbox" />
+                    <div class="newsletter-option-text">
+                        <span class="newsletter-option-title">Field Notes</span>
+                        <span class="newsletter-option-desc">Short observations on photography, interiors, travel, food, and place.</span>
                     </div>
-                    <div class="message-success"><strong>Great!</strong> Check your inbox and click the link to confirm
-                        your subscription.</div>
-                    <div class="message-error">Please enter a valid email address!</div>
-                </form>
+                </label>
+
+                <label class="newsletter-option">
+                    <input type="checkbox" class="newsletter-checkbox" />
+                    <div class="newsletter-option-text">
+                        <span class="newsletter-option-title">Studio Letter</span>
+                        <span class="newsletter-option-desc">Occasional notes on process, materials, and creative practice.</span>
+                    </div>
+                </label>
             </div>
+
+            <form class="newsletter-form" data-members-form="subscribe">
+                <div class="newsletter-form-group">
+       https://github.com/leelachouhan23/ghost-hanoi-clone/pull/3/conflict?name=partials%252Fnewsletter.hbs&ancestor_oid=5a8c73366661297c94c9acd3218c16540e867253&base_oid=841cfe4a5b92d267c1d6627ebe492f668fb120ba&head_oid=b4f13e228bd581562e7e378eca597d549ee91e60             <input class="newsletter-input" data-members-email type="email" placeholder="Email address" required />
+                    <button class="newsletter-button" type="submit">Subscribe</button>
+                </div>
+            </form>
         </div>
     </div>
 </section>

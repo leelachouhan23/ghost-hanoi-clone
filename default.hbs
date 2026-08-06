@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="{{@site.locale}}">
+
+<head>
+    {{ghost_head}}
+
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    <link rel="stylesheet" href="{{asset "css/header.css"}}">
+    <link rel="stylesheet" href="{{asset "css/home.css"}}">
+    <link rel="stylesheet" href="{{asset "css/tag-page.css"}}">
+    <link rel="stylesheet" href="{{asset "css/tag-directory.css"}}">
+    <link rel="stylesheet" href="{{asset "css/author-page.css"}}">
+    <link rel="stylesheet" href="{{asset "css/authors-directory.css"}}">
+    <link rel="stylesheet" href="{{asset "css/all-stories.css"}}">
+    <link rel="stylesheet" href="{{asset "css/responsive.css"}}">
+    <link rel="stylesheet" href="{{asset "css/color-picker.css"}}">
+
 <head>
   <meta charset="utf-8">
   <title>{{meta_title}}</title>
@@ -24,6 +39,7 @@
 
   {{ghost_head}}
 </head>
+
 <body class="{{body_class}}">
 
   {{> "header"}}
@@ -31,6 +47,17 @@
   <main class="site-main" id="main-content">
     {{{body}}}
   </main>
+
+    {{{body}}}
+
+    {{> "footer"}}
+
+    {{> "color-picker"}}
+
+    {{ghost_foot}}
+
+    <script src="{{asset "js/main.js"}}"></script>
+    <script src="{{asset "js/color-picker.js"}}"></script>
 
   {{> "newsletter"}}
   {{> "footer"}}
@@ -40,4 +67,5 @@
   <script src="{{asset "js/main.js"}}"></script>
   {{ghost_foot}}
 </body>
+
 </html>
