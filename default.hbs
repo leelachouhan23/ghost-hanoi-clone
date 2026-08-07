@@ -15,11 +15,10 @@
     <link rel="stylesheet" href="{{asset "css/responsive.css"}}">
     <link rel="stylesheet" href="{{asset "css/color-picker.css"}}">
 
-<head>
-  <meta charset="utf-8">
+{{!-- <head> --}}
+  {{!-- <meta charset="utf-8">
   <title>{{meta_title}}</title>
-  <meta name="description" content="{{meta_description}}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
 
   <link rel="icon" href="{{@site.icon}}">
   <link rel="canonical" href="{{url absolute="true"}}">
@@ -37,7 +36,7 @@
     }
   </style>
 
-  {{ghost_head}}
+  {{!-- {{ghost_head}} --}}
 </head>
 
 <body class="{{body_class}}">
@@ -48,15 +47,15 @@
     {{{body}}}
   </main>
 
-    {{{body}}}
+    {{!-- {{{body}}} --}}
 
-    {{> "footer"}}
+    {{!-- {{> "footer"}} --}}
 
     {{> "color-picker"}}
 
-    {{ghost_foot}}
+    {{!-- {{ghost_foot}} --}}
 
-    <script src="{{asset "js/main.js"}}"></script>
+    {{!-- <script src="{{asset "js/main.js"}}"></script> --}}
     <script src="{{asset "js/color-picker.js"}}"></script>
 
   {{> "newsletter"}}
@@ -65,6 +64,11 @@
   {{!-- {{> "footer"}} --}}
 
   <script src="{{asset "js/main.js"}}"></script>
+  {{!-- gscan references --}}
+{{#if false}}
+    {{@custom.archive_dropdown_image}}
+    {{@custom.post_layouts_dropdown_image}}
+{{/if}}
   {{ghost_foot}}
 </body>
 

@@ -33,7 +33,7 @@
         "type": "color",
         "default": "#8a5a3b"
       },
-      "mewsletter_image": {
+      "newsletter_image": {
         "type": "color",
         "default": "#8a5a3b"
       },
@@ -84,7 +84,16 @@
       "instagram_url": {
         "type": "text",
         "description": "Full URL to your Instagram profile"
+      },
+      
+      "newsletter_title": {
+        "type": "text",
+        "default": "Subscribe to our newsletter"
+      },
+      "newsletter_description": {
+        "type": "text",
+        "default": "Get the latest posts delivered directly to your inbox."
       }
-    }
-  }
-}
+          }
+        }
+      }
